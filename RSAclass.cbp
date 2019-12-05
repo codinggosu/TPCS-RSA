@@ -31,11 +31,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="../../../../../boost_1_71_0" />
+			<Add directory="../../../../../../../boost/boost_1_60_0" />
 		</Compiler>
 		<Linker>
-			<Add directory="../../../../../boost_1_71_0/stage/lib" />
+			<Add directory="../../../../../../../boost/boost_1_60_0/stage/lib" />
 		</Linker>
+		<Unit filename="PrimeGen.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

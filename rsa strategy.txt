@@ -1,0 +1,22 @@
+use fermat test?
+
+test if n is prime by:
+a^(n-1) = 1 (mod n)
+if the above holds, a is a witness
+
+however, we have to worry about carmichael numbers
+
+
+
+ask about why boost library to generate prime won't work - think i figured it out
+
+
+why :
+template <class Number>
+Number fastExpo(Number base, Number exponent){
+    return mp::pow(base,exponent);
+}
+
+won't work??
+
+C:\Users\dongj\Desktop\school\2019-2\계산과학\RSA\FastExpo.hpp|11|error: no matching function for call to 'pow(boost::multiprecision::number<boost::multiprecision::backends::cpp_int_backend<> >&, boost::multiprecision::number<boost::multiprecision::backends::cpp_int_backend<> >&)'|
