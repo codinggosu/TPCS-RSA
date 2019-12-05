@@ -1,7 +1,7 @@
 #include <iostream>
 #include <boost/multiprecision/cpp_int.hpp>
 #include <cmath>
-#include "PrimeGen.h"
+#include "PrimeGen.hpp"
 
 namespace mp = boost::multiprecision;
 
