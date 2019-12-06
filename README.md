@@ -14,6 +14,6 @@
 
 ## Room for improvement:
 * optimize miller rabin test(?)
-* 
+* exchange symmetric key with RSA and do symmetric key encryption/decryption after that
 
 
