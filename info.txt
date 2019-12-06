@@ -1,10 +1,10 @@
 https://crypto.stackexchange.com/questions/71/how-can-i-generate-large-prime-numbers-for-rsa
 
-
+===========================================================================
 selecting e:
 https://www.reddit.com/r/crypto/comments/6363di/how_do_computers_choose_the_rsa_value_for_e/
 
-
+======================================================================
 Primality testing:
 https://www.boost.org/doc/libs/1_61_0/libs/multiprecision/doc/html/boost_multiprecision/tut/primetest.html
 
@@ -13,6 +13,10 @@ https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
 
 https://medium.com/@prudywsh/how-to-generate-big-prime-numbers-miller-rabin-49e6e6af32fb
  (main one) 
+ 
+ https://crypto.stanford.edu/pbc/notes/numbertheory/millerrabin.html
+ (good explanation of theory)
+ 
  
  
  https://langui.sh/2009/03/07/generating-very-large-primes/

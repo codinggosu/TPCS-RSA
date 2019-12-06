@@ -1,4 +1,5 @@
 use fermat test?
+General Strategy:
 
 test if n is prime by:
 a^(n-1) = 1 (mod n)
@@ -6,17 +7,17 @@ if the above holds, a is a witness
 
 however, we have to worry about carmichael numbers
 
+=====================================================================
+questions:
+make primeSieve private?
+does the private and public assignment of variables and functions matter?
 
 
-ask about why boost library to generate prime won't work - think i figured it out
 
 
-why :
-template <class Number>
-Number fastExpo(Number base, Number exponent){
-    return mp::pow(base,exponent);
-}
+=====================================================================
+room for improvement:
 
-won't work??
-
-C:\Users\dongj\Desktop\school\2019-2\계산과학\RSA\FastExpo.hpp|11|error: no matching function for call to 'pow(boost::multiprecision::number<boost::multiprecision::backends::cpp_int_backend<> >&, boost::multiprecision::number<boost::multiprecision::backends::cpp_int_backend<> >&)'|
+miller rabin:
+However, if the smallest composite number that passes a particular set of tests is known ahead of time, then that set of tests constitutes a primality proof for all smaller numbers. The sequence of smallest odd numbers passing a multiple Rabin-Miller test using the first k primes for k=1, 2, ... is given by 2047, 1373653, 25326001, 3215031751, 2152302898747, 3474749660383, 341550071728321, 341550071728321, ... (OEIS A014233; Jaeschke 1993). Therefore, multiple Rabin tests using the first 7 primes (using 8 gives no improvement) are valid for every number up to 3.4×10^(14).
+http://mathworld.wolfram.com/Rabin-MillerStrongPseudoprimeTest.html

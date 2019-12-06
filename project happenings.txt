@@ -1,0 +1,9 @@
+first prime number generated was:
+318831468460481049114126232101899133976907367481127
+a simple divide until sqrt(n) python program took more than an hour to run, maybe bug with the code? maybe not
+
+adding fermat test dropped the recursive depth that the generatePrime would go to by a lot.. like.. a really really lot
+
+
+
+

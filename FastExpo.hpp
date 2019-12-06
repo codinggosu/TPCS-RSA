@@ -8,7 +8,6 @@ namespace mp = boost::multiprecision;
 /// @param[in] base: base of the exponent, exponent: exponent
 template <class Number>
 Number fastExpo(Number base, int exponent){
-    std::cout << base << " is the base and the e is " << exponent;
     return mp::pow(base,exponent);
 }
 template <class Number>
