@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1574990777 source:c:\users\owner\desktop\tpcs2019\rsaclass\main.cpp
+1575599186 source:c:\users\owner\desktop\tpcs2019\rsaclass\main.cpp
 	<iostream>
-	<boost/multiprecision/cpp_int.hpp>
 	<cmath>
+	"PrimeGen.hpp"
 
 1565784209 c:\boost_1_71_0\boost\multiprecision\cpp_int.hpp
 	<iostream>
@@ -10487,4 +10487,67 @@
 
 1575567935 c:\users\dongj\desktop\school\2019-2\계산과학\rsa\fastexpo.hpp
 	<boost/multiprecision/cpp_int.hpp>
+
+1575599231 c:\users\owner\desktop\tpcs2019\rsaclass\primegen.hpp
+	<boost/multiprecision/cpp_int.hpp>
+	<cmath>
+	<vector>
+	<random>
+	<ctime>
+	<boost/random/uniform_int_distribution.hpp>
+	"FastExpo.hpp"
+
+1575599202 c:\users\owner\desktop\tpcs2019\rsaclass\fastexpo.hpp
+	<boost/multiprecision/cpp_int.hpp>
+
+1565784221 c:\boost_1_71_0\boost\random\uniform_int_distribution.hpp
+	<iosfwd>
+	<ios>
+	<istream>
+	<boost/config.hpp>
+	<boost/limits.hpp>
+	<boost/assert.hpp>
+	<boost/random/detail/config.hpp>
+	<boost/random/detail/operators.hpp>
+	<boost/random/detail/uniform_int_float.hpp>
+	<boost/random/detail/signed_unsigned_tools.hpp>
+	<boost/random/traits.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/mpl/if.hpp>
+
+1565784221 c:\boost_1_71_0\boost\random\detail\config.hpp
+	<boost/config.hpp>
+
+1565784221 c:\boost_1_71_0\boost\random\detail\operators.hpp
+	<boost/random/detail/config.hpp>
+	<boost/detail/workaround.hpp>
+
+1565784221 c:\boost_1_71_0\boost\random\detail\uniform_int_float.hpp
+	<boost/limits.hpp>
+	<boost/config.hpp>
+	<boost/integer.hpp>
+	<boost/random/detail/config.hpp>
+	<boost/random/detail/generator_bits.hpp>
+	<boost/random/detail/disable_warnings.hpp>
+	<boost/random/detail/enable_warnings.hpp>
+
+1565784221 c:\boost_1_71_0\boost\random\detail\generator_bits.hpp
+	<boost/limits.hpp>
+
+1565784221 c:\boost_1_71_0\boost\random\detail\disable_warnings.hpp
+	<boost/config.hpp>
+
+1565784221 c:\boost_1_71_0\boost\random\detail\enable_warnings.hpp
+
+1565784221 c:\boost_1_71_0\boost\random\detail\signed_unsigned_tools.hpp
+	<boost/limits.hpp>
+	<boost/config.hpp>
+	<boost/random/traits.hpp>
+
+1565784221 c:\boost_1_71_0\boost\random\traits.hpp
+	<boost/type_traits/is_signed.hpp>
+	<boost/type_traits/is_integral.hpp>
+	<boost/type_traits/make_unsigned.hpp>
+	<boost/mpl/bool.hpp>
+	<limits>
 

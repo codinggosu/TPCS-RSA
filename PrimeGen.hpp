@@ -81,20 +81,18 @@ public:
             r /= 2;
         }
 
-        // use a 64 bit number as a, since candidate is always bigger than 64 bits
-        std::mt19937_64 gen;
-        mp::cpp_int a = gen();
-//        mp::cpp_int a = candidate - gen()*std::time(0);
-        boost::random::uniform_int_distribution<Number> dis(1,s-1); // generator for j which is an integer in range [0, s-1]
-        mp::cpp_int j = dis(gen);
+        std::mt19937_64 gen; // PRNG for seeding uniform_int_distribution
+        boost::random::uniform_int_distribution<Number> disa (2, candidate-2); //generator for a which is int in range [1,n-1]
+        mp::cpp_int a = disa(gen);
+        int int_j = 0; // j is declared as int since exponentiating any reasonable number more than 2 ^ 64 times would require 7 exabytes of RAM
         mp::cpp_int two = 2;
-        mp::cpp_int two_expo_j = fastExpo(two, j); // 2 ^ j
+        mp::cpp_int two_expo_j = fastExpo(two, int_j); // 2 ^ j
         mp::cpp_int expo_j_r = two_expo_j * r; // (2 ^ j) * r
-//        for (int i = 0; i < 25; i ++){
-//                if ((fastExpo(a, r) % candidate == 1) || fastExpo(a, expo_j_r)%candidate==-1)
-//                    continue;
-//                else return false;
-//        }
+        for (int i = 0; i < 25; i ++){
+                if ((fastExpoMod(a, r, candidate) == 1) || fastExpoMod(a, expo_j_r, candidate)==-1)
+                    continue;
+                else return false;
+        }
 
         return true;
     }
