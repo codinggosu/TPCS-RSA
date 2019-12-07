@@ -1,5 +1,14 @@
+
+# folders
 /bin/Debug/*
 /obj/Debug/*
+/doxygen/*
+
+
+# C::B stuff
 *.depend
 *.layout
 *.cbp
+
+# text file to keep track of stuff
+*.txt
