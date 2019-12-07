@@ -12,6 +12,7 @@ template <class Number>
 Number fastExpo(Number base, int exponent){
     return mp::pow(base,exponent);
 }
+
 template <class Number>
 Number fastExpoMod(Number base, Number exponent, Number mod){
     return mp::powm(base, exponent, mod);
@@ -33,27 +34,28 @@ Number customeExpoMod(Number base, Number exponent, Number mod){
     }
     // for when exponentiating by d
     else{
+        Number answer = 1;
         // vector to hold binary bits
         std::vector<bool> bin = std::vector<bool>();
         // temporary variable to hold base being divided by 2
-        mp::cpp_int temp = base;
+        Number temp = exponent;
         //convert to binary
-        while (base> 0){
-            bool even_odd = base & 1;
+        while (temp > 0){
+            bool even_odd = temp & 1;
             bin.push_back(even_odd);
-            base /= 2;
+            temp /= 2;
         }
-        //variable to keep track of what bits are "on" and what bits are "off"
-        int exp = 0;
-        std::reverse(bin.begin(),bin.end());
-
-
-
-
-//        for (auto i :bin )
-//            std::cout << i;
-//        std::cout << "end of vector \n";
-        return 88;
+//        std::reverse(bin.begin(),bin.end());
+        // variable to keep track to base ^ (some power of 2) modulo mod
+        Number base_two = base % mod;
+        for (auto i : bin){
+            if (i){
+                answer *= base_two;
+            }
+            base_two = (base_two * base_two) % mod;
+//            std::cout << "answer" << answer;
+        }
+        return answer % mod;
     }
 }
 

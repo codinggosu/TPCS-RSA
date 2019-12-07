@@ -14,11 +14,11 @@ int main()
 //    PrimeGen<mp::cpp_int> pg = PrimeGen<mp::cpp_int>();
 //    std::cout << "prime generated : " << pg.generatePrime() << "\n";
 
-    mp::cpp_int base = 100123;
-    mp::cpp_int e = 6;
-    mp::cpp_int mod = 117;
+    mp::cpp_int base = 1112323;
+    mp::cpp_int e = 123411234;
+    mp::cpp_int mod = 1178;
     std::cout << customeExpoMod(base, e, mod) << "is the mod exp answer";
-
+    std::cout << fastExpoMod(base, e, mod) << " is the default mod";
 //    Cryption<mp::cpp_int> crypt = Cryption<mp::cpp_int>();
 //    crypt.generateKeys();
 //    mp::cpp_int cyphertext = crypt.encrypt(1234);
