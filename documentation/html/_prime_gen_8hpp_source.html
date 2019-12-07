@@ -125,13 +125,13 @@ $(function() {
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_prime_gen.html#a9abdf338410e68f51f03ef3ea8d103ba">   70</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_prime_gen.html#a9abdf338410e68f51f03ef3ea8d103ba">fermatTest</a>(Number candidate, <span class="keywordtype">int</span> repetitions=1){</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::mt19937_64 gen; <span class="comment">//seed for uniform int distribution &quot;a&quot; generator</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::mt19937_64 gen(std::time(0)); <span class="comment">//seed for uniform int distribution &quot;a&quot; generator</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        boost::random::uniform_int_distribution&lt;Number&gt; disa (2, candidate-2); <span class="comment">// generate a</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        mp::cpp_int a;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        mp::cpp_int minus_one = candidate -1;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; repetitions; i ++){</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            a = disa(gen); <span class="comment">// reset a</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="_fast_expo_8hpp.html#ae1fe4844e0170100a1e6cb4118a1ac40">fastExpoMod</a>(a, minus_one, candidate) != 1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a>(a, minus_one, candidate) != 1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
@@ -146,7 +146,7 @@ $(function() {
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            s += 1;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            r /= 2;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        std::mt19937_64 gen; <span class="comment">// PRNG for seeding uniform_int_distribution</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        std::mt19937_64 gen(std::time(0)); <span class="comment">// PRNG for seeding uniform_int_distribution</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        boost::random::uniform_int_distribution&lt;Number&gt; disa (2, candidate-2); <span class="comment">//generator for a which is int in range [1,n-1]</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        mp::cpp_int a = disa(gen);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">// j is declared as int since exponentiating any reasonable number more than 2 ^ 64 times would require 7 exabytes of RAM</span></div>
@@ -228,6 +228,7 @@ $(function() {
 <div class="ttc" id="aclass_prime_gen_html_ab21dc2a48756653988979b41b4c4bf49"><div class="ttname"><a href="class_prime_gen.html#ab21dc2a48756653988979b41b4c4bf49">PrimeGen::generateCandidate</a></div><div class="ttdeci">Number generateCandidate()</div><div class="ttdef"><b>Definition:</b> PrimeGen.hpp:123</div></div>
 <div class="ttc" id="anamespaceprimetest_html_a2a64769711a4abc1b5041dfddfe7cd83"><div class="ttname"><a href="namespaceprimetest.html#a2a64769711a4abc1b5041dfddfe7cd83">primetest.prime</a></div><div class="ttdeci">def prime(n)</div><div class="ttdef"><b>Definition:</b> primetest.py:2</div></div>
 <div class="ttc" id="a_fast_expo_8hpp_html_aa4b24aa9b1e279a90ce65130141a9bed"><div class="ttname"><a href="_fast_expo_8hpp.html#aa4b24aa9b1e279a90ce65130141a9bed">fastExpo</a></div><div class="ttdeci">Number fastExpo(Number base, int exponent)</div><div class="ttdef"><b>Definition:</b> FastExpo.hpp:12</div></div>
+<div class="ttc" id="a_fast_expo_8hpp_html_a8ecbddd9149852f135b65af702206b97"><div class="ttname"><a href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a></div><div class="ttdeci">Number customExpoMod(Number base, Number exponent, Number mod)</div><div class="ttdoc">Fast modular exponentiation algorithm.</div><div class="ttdef"><b>Definition:</b> FastExpo.hpp:23</div></div>
 <div class="ttc" id="aclass_prime_gen_html_ad5c15bfdfead9a710093b7eaab68fe6a"><div class="ttname"><a href="class_prime_gen.html#ad5c15bfdfead9a710093b7eaab68fe6a">PrimeGen::generatePrime</a></div><div class="ttdeci">Number generatePrime()</div><div class="ttdef"><b>Definition:</b> PrimeGen.hpp:144</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -68,13 +68,13 @@ public:
     /// Fermat primality test: uses the identity a^(n-1) = 1 (mod n) when n is prime, used for "middle" step before miller rabin
     /// after preliminary sieve checks
     bool fermatTest(Number candidate, int repetitions=1){
-        std::mt19937_64 gen; //seed for uniform int distribution "a" generator
+        std::mt19937_64 gen(std::time(0)); //seed for uniform int distribution "a" generator
         boost::random::uniform_int_distribution<Number> disa (2, candidate-2); // generate a
         mp::cpp_int a;
         mp::cpp_int minus_one = candidate -1;
         for (int i = 0; i < repetitions; i ++){
             a = disa(gen); // reset a
-            if (fastExpoMod(a, minus_one, candidate) != 1) return false;
+            if (customExpoMod(a, minus_one, candidate) != 1) return false;
         }
         return true;
     }
@@ -93,7 +93,7 @@ public:
             s += 1;
             r /= 2;
         }
-        std::mt19937_64 gen; // PRNG for seeding uniform_int_distribution
+        std::mt19937_64 gen(std::time(0)); // PRNG for seeding uniform_int_distribution
         boost::random::uniform_int_distribution<Number> disa (2, candidate-2); //generator for a which is int in range [1,n-1]
         mp::cpp_int a = disa(gen);
         // j is declared as int since exponentiating any reasonable number more than 2 ^ 64 times would require 7 exabytes of RAM

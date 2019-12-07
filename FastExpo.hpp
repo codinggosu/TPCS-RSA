@@ -20,7 +20,7 @@ Number fastExpoMod(Number base, Number exponent, Number mod){
 
 /// Fast modular exponentiation algorithm
 template <class Number>
-Number customeExpoMod(Number base, Number exponent, Number mod){
+Number customExpoMod(Number base, Number exponent, Number mod){
     // for when exponentiating by e, note 65536 = 2 ^ 16
     if (exponent == 65537){
         Number temp = 1;

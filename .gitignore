@@ -12,3 +12,7 @@
 
 # text file to keep track of stuff
 *.txt
+
+
+# Documentation stuff
+Doxygen

@@ -4,20 +4,38 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$class Number $>$ }\\Number \mbox{\hyperlink{_modulo_inv_8hpp_a00cf46c38c788ae3413162ef6bda4075}{mod\+Inverse}} (Number a, Number mod)
+{\footnotesize template$<$class Number $>$ }\\Number \mbox{\hyperlink{_modulo_inv_8hpp_ab5a522c56b4789dc76919d598ead4b2c}{mod\+Inverse}} (Number mod, Number e=65537)
+\item 
+{\footnotesize template$<$class Number $>$ }\\Number \mbox{\hyperlink{_modulo_inv_8hpp_a6263e042defe7c6c6e4ec37c8ac554e0}{custom\+Mod\+Inverse}} (Number mod, Number e=65537)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{_modulo_inv_8hpp_a00cf46c38c788ae3413162ef6bda4075}\label{_modulo_inv_8hpp_a00cf46c38c788ae3413162ef6bda4075}} 
+\mbox{\Hypertarget{_modulo_inv_8hpp_a6263e042defe7c6c6e4ec37c8ac554e0}\label{_modulo_inv_8hpp_a6263e042defe7c6c6e4ec37c8ac554e0}} 
+\index{ModuloInv.hpp@{ModuloInv.hpp}!customModInverse@{customModInverse}}
+\index{customModInverse@{customModInverse}!ModuloInv.hpp@{ModuloInv.hpp}}
+\doxysubsubsection{\texorpdfstring{customModInverse()}{customModInverse()}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+Number custom\+Mod\+Inverse (\begin{DoxyParamCaption}\item[{Number}]{mod,  }\item[{Number}]{e = {\ttfamily 65537} }\end{DoxyParamCaption})}
+
+custom function to return to modular inverse of e, d, uses extended euclidean G\+CD algorithm 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mod} & the totient, s.\+t e$\ast$d(mod totient) = 1 \\
+\hline
+\mbox{\texttt{ in}}  & {\em e} & 65537, default value of e assumption that e and d are relatively prime satisfied by the fact that e is prime \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_modulo_inv_8hpp_ab5a522c56b4789dc76919d598ead4b2c}\label{_modulo_inv_8hpp_ab5a522c56b4789dc76919d598ead4b2c}} 
 \index{ModuloInv.hpp@{ModuloInv.hpp}!modInverse@{modInverse}}
 \index{modInverse@{modInverse}!ModuloInv.hpp@{ModuloInv.hpp}}
 \doxysubsubsection{\texorpdfstring{modInverse()}{modInverse()}}
 {\footnotesize\ttfamily template$<$class Number $>$ \\
-Number mod\+Inverse (\begin{DoxyParamCaption}\item[{Number}]{a,  }\item[{Number}]{mod }\end{DoxyParamCaption})}
+Number mod\+Inverse (\begin{DoxyParamCaption}\item[{Number}]{mod,  }\item[{Number}]{e = {\ttfamily 65537} }\end{DoxyParamCaption})}
 
-function to return to modular inverse of a 
+wrapper for boost function to calculate mod inverse assumption that e, and d are relatively prime satisfied by the fact that e is prime 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em mod} & the number to be modulo by, a\+: number which the result is a modulo inverse of \\
+\mbox{\texttt{ in}}  & {\em mod} & the totient, s.\+t e$\ast$d(mod totient) = 1 \\
+\hline
+\mbox{\texttt{ in}}  & {\em e} & 65537, default value of e \\
 \hline
 \end{DoxyParams}

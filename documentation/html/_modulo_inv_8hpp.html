@@ -73,13 +73,53 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a00cf46c38c788ae3413162ef6bda4075"><td class="memTemplParams" colspan="2">template&lt;class Number &gt; </td></tr>
-<tr class="memitem:a00cf46c38c788ae3413162ef6bda4075"><td class="memTemplItemLeft" align="right" valign="top">Number&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_modulo_inv_8hpp.html#a00cf46c38c788ae3413162ef6bda4075">modInverse</a> (Number a, Number mod)</td></tr>
-<tr class="separator:a00cf46c38c788ae3413162ef6bda4075"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5a522c56b4789dc76919d598ead4b2c"><td class="memTemplParams" colspan="2">template&lt;class Number &gt; </td></tr>
+<tr class="memitem:ab5a522c56b4789dc76919d598ead4b2c"><td class="memTemplItemLeft" align="right" valign="top">Number&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_modulo_inv_8hpp.html#ab5a522c56b4789dc76919d598ead4b2c">modInverse</a> (Number mod, Number e=65537)</td></tr>
+<tr class="separator:ab5a522c56b4789dc76919d598ead4b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6263e042defe7c6c6e4ec37c8ac554e0"><td class="memTemplParams" colspan="2">template&lt;class Number &gt; </td></tr>
+<tr class="memitem:a6263e042defe7c6c6e4ec37c8ac554e0"><td class="memTemplItemLeft" align="right" valign="top">Number&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_modulo_inv_8hpp.html#a6263e042defe7c6c6e4ec37c8ac554e0">customModInverse</a> (Number mod, Number e=65537)</td></tr>
+<tr class="separator:a6263e042defe7c6c6e4ec37c8ac554e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a00cf46c38c788ae3413162ef6bda4075"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00cf46c38c788ae3413162ef6bda4075">&#9670;&nbsp;</a></span>modInverse()</h2>
+<a id="a6263e042defe7c6c6e4ec37c8ac554e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6263e042defe7c6c6e4ec37c8ac554e0">&#9670;&nbsp;</a></span>customModInverse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Number &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Number customModInverse </td>
+          <td>(</td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>mod</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>e</em> = <code>65537</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>custom function to return to modular inverse of e, d, uses extended euclidean GCD algorithm </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">mod</td><td>the totient, s.t e*d(mod totient) = 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>65537, default value of e assumption that e and d are relatively prime satisfied by the fact that e is prime </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab5a522c56b4789dc76919d598ead4b2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5a522c56b4789dc76919d598ead4b2c">&#9670;&nbsp;</a></span>modInverse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -90,13 +130,13 @@ template&lt;class Number &gt; </div>
           <td class="memname">Number modInverse </td>
           <td>(</td>
           <td class="paramtype">Number&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
+          <td class="paramname"><em>mod</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Number&#160;</td>
-          <td class="paramname"><em>mod</em>&#160;</td>
+          <td class="paramname"><em>e</em> = <code>65537</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -105,9 +145,10 @@ template&lt;class Number &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>function to return to modular inverse of a </p><dl class="params"><dt>Parameters</dt><dd>
+<p>wrapper for boost function to calculate mod inverse assumption that e, and d are relatively prime satisfied by the fact that e is prime </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">mod</td><td>the number to be modulo by, a: number which the result is a modulo inverse of </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mod</td><td>the totient, s.t e*d(mod totient) = 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>65537, default value of e </td></tr>
   </table>
   </dd>
 </dl>

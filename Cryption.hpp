@@ -24,27 +24,28 @@ public:
         this->public_n = p * q;
         this->totient = (p-1) * (q-1);
         this->generatePrivateKey();
-        std::cout << "print keys\n";
-        std::cout << "d" << this->private_key << " n " << this->public_n << " e " << this->public_e
-        << "totient" << this->totient;
-
-
-        // after n,d,e have been generated get rid of p,q, totient, and others
+        // after n,d,e have been generated clear/overwrite p,q, and totient
         this->totient = 0;
         q = 0;
         p = 0;
     }
 
+    /// function to encrypt
+    /// @param[in] Number plaintext
+    /// @param[out] Number cyphertext
     Number encrypt(Number plaintext){
         if (public_n)
-            return fastExpoMod(plaintext, this->public_e, this->public_n);
+            return customExpoMod(plaintext, this->public_e, this->public_n);
         else
             std::cout << "Keys not generated yet\n";
         return 0;
     }
+    /// function to decrypt
+    /// @param[in] Number cyphertext
+    /// @param[out] Number plaintext
     Number decrypt(Number cyphertext){
         if (public_n)
-            return fastExpoMod(cyphertext, this->private_key, this->public_n);
+            return customExpoMod(cyphertext, this->private_key, this->public_n);
         else
             std::cout << "Keys not generated yet\n";
         return 0;
@@ -62,12 +63,7 @@ private:
     void generatePrivateKey(mp::cpp_int e = 65537){
         //generate public key if it hasn't been done already
         if (! (this->public_n)) this->generateKeys();
-        mp::cpp_int d = modInverse(e, totient);
-//        //randomly generate small k
-//        std::mt19937 gen;
-//        boost::random::uniform_int_distribution<Number> disk (2, 10);
-//        mp::cpp_int k = disk(gen);
-//        d = ((k * this->totient)+1)/e;
+        mp::cpp_int d = customModInverse(totient, e);
         this->private_key = d;
     }
 };
