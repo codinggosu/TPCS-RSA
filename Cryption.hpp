@@ -2,7 +2,7 @@
 #define CRYPTION_HPP_INCLUDED
 #endif // CRYPTION_HPP_INCLUDED
 #include "PrimeGen.hpp"
-
+#include "ModuloInv.hpp"
 
 /// class for encrypting and decrypting
 template <class Number>
@@ -50,7 +50,6 @@ public:
         return 0;
     }
 
-
 private:
     /// private key d
     Number private_key;
@@ -63,13 +62,12 @@ private:
     void generatePrivateKey(mp::cpp_int e = 65537){
         //generate public key if it hasn't been done already
         if (! (this->public_n)) this->generateKeys();
-        mp::cpp_int d;
-        //randomly generate small k
-        std::mt19937 gen;
-        boost::random::uniform_int_distribution<Number> disk (2, 10);
-        mp::cpp_int k = disk(gen);
-        d = ((k * this->totient)+1)/e;
-        std::cout << "K IS K " << k <<"\n";
+        mp::cpp_int d = modInverse(e, totient);
+//        //randomly generate small k
+//        std::mt19937 gen;
+//        boost::random::uniform_int_distribution<Number> disk (2, 10);
+//        mp::cpp_int k = disk(gen);
+//        d = ((k * this->totient)+1)/e;
         this->private_key = d;
     }
 };

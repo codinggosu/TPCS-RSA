@@ -12,3 +12,6 @@ this is same as de = totient * (some integer k) + 1
 
 DON'T FORGET TO CHANGE BIGnum in generateCandidate to a big number!!!
 
+
+
+C:\Users\dongj\Desktop\school\2019-2\계산과학\RSA\ModuloInv.hpp|11|error: redefinition of 'template<class Number> Number modInverse(Number, Number)'|
