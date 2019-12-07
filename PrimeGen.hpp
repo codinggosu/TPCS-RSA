@@ -2,14 +2,15 @@
 #define PRIMEGEN_HPP_INCLUDED
 #endif // PRIMEGEN_HPP_INCLUDED
 #include <boost/multiprecision/cpp_int.hpp>
+#include <boost/multiprecision/random.hpp>
 #include <cmath>
-#include <vector>
 #include <random>
 #include <ctime>
 #include <boost/random/uniform_int_distribution.hpp>
-//#include <boost/random/mersenne_twister.hpp>
 #include "FastExpo.hpp"
 #include <set>
+#include <chrono>
+
 
 
 /// A class to generate large prime numbers
@@ -120,16 +121,23 @@ public:
     /// function to generate random number to test for primality, uses b + 2i where b is an odd number
     /// uses device random, which is non deterministic hardware entropy random number generator as seed for PRNG
     Number generateCandidate() {
-        std::random_device seedGen;
-        std::mt19937 mt(seedGen()*std::time(0));
-        mp::cpp_int b = mt();
-        mp::cpp_int i = mt();
-        mp::cpp_int bigNum("110130847310391570192384409610374094385013");
-        while ((b& 1) == 0 || b < 0) b = mt();
-        while (i < 0) i = mt();
+        // i had to make multiple engines because the test environment didn't support random_device
+        // which led to the same number being used as a seed for mt19937
+        std::random_device seed;
+        std::mt19937 mtb(seed()*(int)std::time(0)); //engine for b
+        std::mt19937 mti(seed() * (int)std::chrono::system_clock::now().time_since_epoch().count()); //engine for i
+        std::default_random_engine eng{static_cast<long unsigned int>(time(0))}; //engine for extra randomness
+        mp::cpp_int b = mtb();
+        mp::cpp_int i = mti();
+        // big number to make b bigger than max range of mt19937
+        mp::cpp_int bigNum("13");
+        // make sure b is odd and bigger than 0
+        while ((b & 1) == 0 || b < 0) b = mtb();
+        //make sure that i is bigger than 0
+        while (i < 0) i = mti();
         b *= bigNum;
-        i *= (std::time(0)*11);
-    return b + (2*i);
+        i *= (eng() * std::time(0) * 13);
+    return b + (2*i) / 3000000000000;
     }
 
 
@@ -137,10 +145,10 @@ public:
         std::cout << "level ++";
         // generate prime candidate
         mp::cpp_int candidate = this->generateCandidate();
-        // preliminary and intermediate checks: sieve for preliminary, fermat for intermediate
         // generate prime sieve if it hasn't been generated yet
         if (this->primeSeive.size() == 0) this->createSieve(100);
-        // create new candidate if prelim / intermediate check fails
+        // preliminary and intermediate checks: sieve for preliminary, fermat for intermediate
+        // continuously create new candidate if preliminary / intermediate check fails
         while (!this->prelimCheck(candidate) || !this->fermatTest(candidate))
             candidate = this->generateCandidate();
 

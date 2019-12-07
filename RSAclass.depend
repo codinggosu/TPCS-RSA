@@ -4412,10 +4412,12 @@
 	<boost/multiprecision/cpp_int.hpp>
 	<cmath>
 
-1575636286 source:c:\users\dongj\desktop\school\2019-2\계산과학\rsa\main.cpp
+1575699539 source:c:\users\dongj\desktop\school\2019-2\계산과학\rsa\main.cpp
 	<iostream>
 	<cmath>
-	"PrimeGen.hpp"
+	"Cryption.hpp"
+	<boost/random/random_device.hpp>
+	<chrono>
 
 1449601826 c:\boost\boost_1_60_0\boost\multiprecision\cpp_int.hpp
 	<iostream>
@@ -9731,15 +9733,16 @@
 
 1449601826 c:\boost\boost_1_60_0\boost\multiprecision\cpp_int\import_export.hpp
 
-1575636248 c:\users\dongj\desktop\school\2019-2\계산과학\rsa\primegen.hpp
+1575700033 c:\users\dongj\desktop\school\2019-2\계산과학\rsa\primegen.hpp
 	<boost/multiprecision/cpp_int.hpp>
+	<boost/multiprecision/random.hpp>
 	<cmath>
-	<vector>
 	<random>
 	<ctime>
 	<boost/random/uniform_int_distribution.hpp>
 	"FastExpo.hpp"
 	<set>
+	<chrono>
 
 1575555981 source:c:\users\dongj\desktop\school\2019-2\계산과학\rsa\test.cpp
 
@@ -10486,7 +10489,7 @@
 	<boost/random/detail/operators.hpp>
 	<boost/random/uniform_01.hpp>
 
-1575615147 c:\users\dongj\desktop\school\2019-2\계산과학\rsa\fastexpo.hpp
+1575642935 c:\users\dongj\desktop\school\2019-2\계산과학\rsa\fastexpo.hpp
 	<boost/multiprecision/cpp_int.hpp>
 
 1575599231 c:\users\owner\desktop\tpcs2019\rsaclass\primegen.hpp
@@ -10551,4 +10554,10 @@
 	<boost/type_traits/make_unsigned.hpp>
 	<boost/mpl/bool.hpp>
 	<limits>
+
+1575701411 c:\users\dongj\desktop\school\2019-2\계산과학\rsa\cryption.hpp
+	"PrimeGen.hpp"
+
+1449601826 c:\boost\boost_1_60_0\boost\multiprecision\random.hpp
+	<boost/random.hpp>
 

@@ -1,0 +1,2 @@
+why is the totient of n always q-1, p-1?
+* where totient denotes how many ints smaller than n are relatively prime to n

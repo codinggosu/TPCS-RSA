@@ -5,5 +5,10 @@ a simple divide until sqrt(n) python program took more than an hour to run, mayb
 adding fermat test dropped the recursive depth that the generatePrime would go to by a lot.. like.. a really really lot
 
 
+can calculate d really fast, not finding mod inverse as in de = 1 (mod totient)
+this is same as de = totient * (some integer k) + 1
 
+
+
+DON'T FORGET TO CHANGE BIGnum in generateCandidate to a big number!!!
 

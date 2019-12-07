@@ -4,6 +4,7 @@
 
 namespace mp = boost::multiprecision;
 
+
 /// Function to return the exponent of a number
 /// @param[in] base: base of the exponent, exponent: exponent
 template <class Number>

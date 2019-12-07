@@ -12,8 +12,12 @@ questions:
 make primeSieve private?
 does the private and public assignment of variables and functions matter?
 
+#ifndef PRIMEGEN_HPP_INCLUDED
+#define PRIMEGEN_HPP_INCLUDED
+is automatically included when hpp file is made in C::B, what is this and is this necessary? where should i place the code? anywhere? or between ifndef define and endif
 
 
+i'm kinda mixing between camelCase and underbar for variable names, will this affect my grade?
 
 =====================================================================
 room for improvement:
