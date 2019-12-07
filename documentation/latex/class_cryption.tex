@@ -1,0 +1,128 @@
+\hypertarget{class_cryption}{}\doxysection{Cryption$<$ Number $>$ Class Template Reference}
+\label{class_cryption}\index{Cryption$<$ Number $>$@{Cryption$<$ Number $>$}}
+
+
+class for encrypting and decrypting  
+
+
+
+
+{\ttfamily \#include $<$Cryption.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_cryption_a4907414f6b4cced9574e431cfa75f0ec}{generate\+Keys}} ()
+\begin{DoxyCompactList}\small\item\em function to generate n(public\+N), totient, and d(private\+\_\+key). \end{DoxyCompactList}\item 
+Number \mbox{\hyperlink{class_cryption_a15df5e0f54ce4285b09a996146e1a811}{encrypt}} (Number plaintext)
+\item 
+Number \mbox{\hyperlink{class_cryption_aa38ebb45e65f494c12e6548da8e98efb}{decrypt}} (Number cyphertext)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Number \mbox{\hyperlink{class_cryption_a2e3ac1b387197aeae93db8a846da71e0}{public\+\_\+n}}
+\begin{DoxyCompactList}\small\item\em public key n found by multiplying two large primes p and q \end{DoxyCompactList}\item 
+Number \mbox{\hyperlink{class_cryption_a9bff9890be6f8bc120338be497512d5c}{public\+\_\+e}} = 65537
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_cryption_a494c242189f9a5e88da060f50f041895}{generate\+Private\+Key}} (mp\+::cpp\+\_\+int e=65537)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Number \mbox{\hyperlink{class_cryption_addfd1b24e385dd50d98baa5feb851d0f}{private\+\_\+key}}
+\begin{DoxyCompactList}\small\item\em private key d \end{DoxyCompactList}\item 
+Number \mbox{\hyperlink{class_cryption_adcd182594775bbe89773677403836209}{totient}}
+\begin{DoxyCompactList}\small\item\em product of q-\/1 and p-\/1 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class Number$>$\newline
+class Cryption$<$ Number $>$}
+
+class for encrypting and decrypting 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cryption_aa38ebb45e65f494c12e6548da8e98efb}\label{class_cryption_aa38ebb45e65f494c12e6548da8e98efb}} 
+\index{Cryption$<$ Number $>$@{Cryption$<$ Number $>$}!decrypt@{decrypt}}
+\index{decrypt@{decrypt}!Cryption$<$ Number $>$@{Cryption$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{decrypt()}{decrypt()}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+Number \mbox{\hyperlink{class_cryption}{Cryption}}$<$ Number $>$\+::decrypt (\begin{DoxyParamCaption}\item[{Number}]{cyphertext }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_cryption_a15df5e0f54ce4285b09a996146e1a811}\label{class_cryption_a15df5e0f54ce4285b09a996146e1a811}} 
+\index{Cryption$<$ Number $>$@{Cryption$<$ Number $>$}!encrypt@{encrypt}}
+\index{encrypt@{encrypt}!Cryption$<$ Number $>$@{Cryption$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{encrypt()}{encrypt()}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+Number \mbox{\hyperlink{class_cryption}{Cryption}}$<$ Number $>$\+::encrypt (\begin{DoxyParamCaption}\item[{Number}]{plaintext }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_cryption_a4907414f6b4cced9574e431cfa75f0ec}\label{class_cryption_a4907414f6b4cced9574e431cfa75f0ec}} 
+\index{Cryption$<$ Number $>$@{Cryption$<$ Number $>$}!generateKeys@{generateKeys}}
+\index{generateKeys@{generateKeys}!Cryption$<$ Number $>$@{Cryption$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{generateKeys()}{generateKeys()}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+void \mbox{\hyperlink{class_cryption}{Cryption}}$<$ Number $>$\+::generate\+Keys (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+function to generate n(public\+N), totient, and d(private\+\_\+key). 
+
+\mbox{\Hypertarget{class_cryption_a494c242189f9a5e88da060f50f041895}\label{class_cryption_a494c242189f9a5e88da060f50f041895}} 
+\index{Cryption$<$ Number $>$@{Cryption$<$ Number $>$}!generatePrivateKey@{generatePrivateKey}}
+\index{generatePrivateKey@{generatePrivateKey}!Cryption$<$ Number $>$@{Cryption$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{generatePrivateKey()}{generatePrivateKey()}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+void \mbox{\hyperlink{class_cryption}{Cryption}}$<$ Number $>$\+::generate\+Private\+Key (\begin{DoxyParamCaption}\item[{mp\+::cpp\+\_\+int}]{e = {\ttfamily 65537} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+function to generate private key d when e is given as 65537 calculated by some integer (k $\ast$ totient + 1)/e, since ed = 1 (mod totient) 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_cryption_addfd1b24e385dd50d98baa5feb851d0f}\label{class_cryption_addfd1b24e385dd50d98baa5feb851d0f}} 
+\index{Cryption$<$ Number $>$@{Cryption$<$ Number $>$}!private\_key@{private\_key}}
+\index{private\_key@{private\_key}!Cryption$<$ Number $>$@{Cryption$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{private\_key}{private\_key}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+Number \mbox{\hyperlink{class_cryption}{Cryption}}$<$ Number $>$\+::private\+\_\+key\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+private key d 
+
+\mbox{\Hypertarget{class_cryption_a9bff9890be6f8bc120338be497512d5c}\label{class_cryption_a9bff9890be6f8bc120338be497512d5c}} 
+\index{Cryption$<$ Number $>$@{Cryption$<$ Number $>$}!public\_e@{public\_e}}
+\index{public\_e@{public\_e}!Cryption$<$ Number $>$@{Cryption$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{public\_e}{public\_e}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+Number \mbox{\hyperlink{class_cryption}{Cryption}}$<$ Number $>$\+::public\+\_\+e = 65537}
+
+public key e s.\+t e is coprime to totient and between range \mbox{[}1, totient\mbox{]}, coprimality is guaranteed since 65537 is a prime that is 2 $^\wedge$ 16 + 1 chosen for its ease of computation when used as an exponent \mbox{\Hypertarget{class_cryption_a2e3ac1b387197aeae93db8a846da71e0}\label{class_cryption_a2e3ac1b387197aeae93db8a846da71e0}} 
+\index{Cryption$<$ Number $>$@{Cryption$<$ Number $>$}!public\_n@{public\_n}}
+\index{public\_n@{public\_n}!Cryption$<$ Number $>$@{Cryption$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{public\_n}{public\_n}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+Number \mbox{\hyperlink{class_cryption}{Cryption}}$<$ Number $>$\+::public\+\_\+n}
+
+
+
+public key n found by multiplying two large primes p and q 
+
+\mbox{\Hypertarget{class_cryption_adcd182594775bbe89773677403836209}\label{class_cryption_adcd182594775bbe89773677403836209}} 
+\index{Cryption$<$ Number $>$@{Cryption$<$ Number $>$}!totient@{totient}}
+\index{totient@{totient}!Cryption$<$ Number $>$@{Cryption$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{totient}{totient}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+Number \mbox{\hyperlink{class_cryption}{Cryption}}$<$ Number $>$\+::totient\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+product of q-\/1 and p-\/1 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_cryption_8hpp}{Cryption.\+hpp}}\end{DoxyCompactItemize}

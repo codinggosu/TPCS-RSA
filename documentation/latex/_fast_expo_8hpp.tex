@@ -1,0 +1,46 @@
+\hypertarget{_fast_expo_8hpp}{}\doxysection{Fast\+Expo.\+hpp File Reference}
+\label{_fast_expo_8hpp}\index{FastExpo.hpp@{FastExpo.hpp}}
+{\ttfamily \#include $<$boost/multiprecision/cpp\+\_\+int.\+hpp$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Number $>$ }\\Number \mbox{\hyperlink{_fast_expo_8hpp_aa4b24aa9b1e279a90ce65130141a9bed}{fast\+Expo}} (Number base, int exponent)
+\item 
+{\footnotesize template$<$class Number $>$ }\\Number \mbox{\hyperlink{_fast_expo_8hpp_ae1fe4844e0170100a1e6cb4118a1ac40}{fast\+Expo\+Mod}} (Number base, Number exponent, Number mod)
+\item 
+{\footnotesize template$<$class Number $>$ }\\Number \mbox{\hyperlink{_fast_expo_8hpp_a556f667226bb9370d0a6d85d0776f975}{custome\+Expo\+Mod}} (Number base, Number exponent, Number mod)
+\begin{DoxyCompactList}\small\item\em Fast modular exponentiation algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_fast_expo_8hpp_a556f667226bb9370d0a6d85d0776f975}\label{_fast_expo_8hpp_a556f667226bb9370d0a6d85d0776f975}} 
+\index{FastExpo.hpp@{FastExpo.hpp}!customeExpoMod@{customeExpoMod}}
+\index{customeExpoMod@{customeExpoMod}!FastExpo.hpp@{FastExpo.hpp}}
+\doxysubsubsection{\texorpdfstring{customeExpoMod()}{customeExpoMod()}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+Number custome\+Expo\+Mod (\begin{DoxyParamCaption}\item[{Number}]{base,  }\item[{Number}]{exponent,  }\item[{Number}]{mod }\end{DoxyParamCaption})}
+
+
+
+Fast modular exponentiation algorithm. 
+
+\mbox{\Hypertarget{_fast_expo_8hpp_aa4b24aa9b1e279a90ce65130141a9bed}\label{_fast_expo_8hpp_aa4b24aa9b1e279a90ce65130141a9bed}} 
+\index{FastExpo.hpp@{FastExpo.hpp}!fastExpo@{fastExpo}}
+\index{fastExpo@{fastExpo}!FastExpo.hpp@{FastExpo.hpp}}
+\doxysubsubsection{\texorpdfstring{fastExpo()}{fastExpo()}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+Number fast\+Expo (\begin{DoxyParamCaption}\item[{Number}]{base,  }\item[{int}]{exponent }\end{DoxyParamCaption})}
+
+Function to return the exponent of a number 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em base} & base of the exponent, exponent\+: exponent \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_fast_expo_8hpp_ae1fe4844e0170100a1e6cb4118a1ac40}\label{_fast_expo_8hpp_ae1fe4844e0170100a1e6cb4118a1ac40}} 
+\index{FastExpo.hpp@{FastExpo.hpp}!fastExpoMod@{fastExpoMod}}
+\index{fastExpoMod@{fastExpoMod}!FastExpo.hpp@{FastExpo.hpp}}
+\doxysubsubsection{\texorpdfstring{fastExpoMod()}{fastExpoMod()}}
+{\footnotesize\ttfamily template$<$class Number $>$ \\
+Number fast\+Expo\+Mod (\begin{DoxyParamCaption}\item[{Number}]{base,  }\item[{Number}]{exponent,  }\item[{Number}]{mod }\end{DoxyParamCaption})}
+

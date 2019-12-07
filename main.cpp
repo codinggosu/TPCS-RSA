@@ -24,3 +24,29 @@ int main()
 //    system("pause");
     return 0;
 }
+
+
+
+// doxygen stuff for main page
+/*! \mainpage TPCS RSA project by Dong Joo Lee
+ *
+ * \section Description
+ *
+ * A project to explore the number theory concepts surrounding RSA
+ *
+ * \section Concepts-and-Implementations
+ * Implemented functions for prime generation, primality testing(fermat/miller-rabin)
+ * ,modulo inverse solving(extended GCD), fast modulo exponentiation, and
+ * RSA encryption/decryption
+ *
+ *
+ * \subsection  SECTION1 Primality Testing:
+ *  preliminary check by dividing by small primes sieve of Eratosthenes),followed by fermat test, then finally miller-rabin test
+ * \subsection  SECTION2 Mod Inverse Solver:
+ * perform extended euclidean GCD algorithm
+ * \subsection  SECTION3 Fast Mod Exponentiation:
+ * left to right/right to left binary method
+ *
+ *
+ * etc...
+ */

@@ -1,0 +1,124 @@
+\hypertarget{class_prime_gen}{}\doxysection{Prime\+Gen$<$ Number $>$ Class Template Reference}
+\label{class_prime_gen}\index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}}
+
+
+A class to generate large prime numbers.  
+
+
+
+
+{\ttfamily \#include $<$Prime\+Gen.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_prime_gen_ab99cbbceaf9561a8bfb0f04a2924c518}{create\+Sieve}} (int until)
+\item 
+bool \mbox{\hyperlink{class_prime_gen_ab05cd6999ea2fb1cf33ef3bdea50f8d2}{prelim\+Check}} (Number prime\+Candidate)
+\begin{DoxyCompactList}\small\item\em a function to check whether a number is divisible by any small prime in the member variable sieve \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_prime_gen_a32a4d093b941b2b6c90caf7974125f9f}{is\+Prime\+Sure}} (Number num)
+\begin{DoxyCompactList}\small\item\em a 100\% sure method to detect whether a number is prime, works by dividing from 2 to sqrt(n) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_prime_gen_a9abdf338410e68f51f03ef3ea8d103ba}{fermat\+Test}} (Number candidate, int repetitions=1)
+\item 
+bool \mbox{\hyperlink{class_prime_gen_abd36defd1151bb00aef571745701c24c}{miller\+Rabin\+Test}} (Number candidate, int repetitions=25)
+\item 
+Number \mbox{\hyperlink{class_prime_gen_ab21dc2a48756653988979b41b4c4bf49}{generate\+Candidate}} ()
+\item 
+Number \mbox{\hyperlink{class_prime_gen_ad5c15bfdfead9a710093b7eaab68fe6a}{generate\+Prime}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::set$<$ int $>$ \mbox{\hyperlink{class_prime_gen_ab6198846797d3a028a008915d2acb47b}{prime\+Seive}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class Number$>$\newline
+class Prime\+Gen$<$ Number $>$}
+
+A class to generate large prime numbers. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_prime_gen_ab99cbbceaf9561a8bfb0f04a2924c518}\label{class_prime_gen_ab99cbbceaf9561a8bfb0f04a2924c518}} 
+\index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}!createSieve@{createSieve}}
+\index{createSieve@{createSieve}!PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{createSieve()}{createSieve()}}
+{\footnotesize\ttfamily template$<$class Number$>$ \\
+void \mbox{\hyperlink{class_prime_gen}{Prime\+Gen}}$<$ Number $>$\+::create\+Sieve (\begin{DoxyParamCaption}\item[{int}]{until }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+generate a sieve until the \char`\"{}until\char`\"{} value of primes\+: used to do preliminary prime checks before entering expensive probabilistic prime checks -\/$>$ by \mbox{\hyperlink{class_prime_gen_ab05cd6999ea2fb1cf33ef3bdea50f8d2}{prelim\+Check()}} implementation of Sieve of Eratosthenes algorithm 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em until} & uses int as input since check sieve is likely to be small \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_prime_gen_a9abdf338410e68f51f03ef3ea8d103ba}\label{class_prime_gen_a9abdf338410e68f51f03ef3ea8d103ba}} 
+\index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}!fermatTest@{fermatTest}}
+\index{fermatTest@{fermatTest}!PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{fermatTest()}{fermatTest()}}
+{\footnotesize\ttfamily template$<$class Number$>$ \\
+bool \mbox{\hyperlink{class_prime_gen}{Prime\+Gen}}$<$ Number $>$\+::fermat\+Test (\begin{DoxyParamCaption}\item[{Number}]{candidate,  }\item[{int}]{repetitions = {\ttfamily 1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Fermat primality test\+: uses the identity a$^\wedge$(n-\/1) = 1 (mod n) when n is prime, used for \char`\"{}middle\char`\"{} step before miller rabin after preliminary sieve checks \mbox{\Hypertarget{class_prime_gen_ab21dc2a48756653988979b41b4c4bf49}\label{class_prime_gen_ab21dc2a48756653988979b41b4c4bf49}} 
+\index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}!generateCandidate@{generateCandidate}}
+\index{generateCandidate@{generateCandidate}!PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{generateCandidate()}{generateCandidate()}}
+{\footnotesize\ttfamily template$<$class Number$>$ \\
+Number \mbox{\hyperlink{class_prime_gen}{Prime\+Gen}}$<$ Number $>$\+::generate\+Candidate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+function to generate random number to test for primality, uses b + 2i where b is an odd number uses device random, which is non deterministic hardware entropy random number generator as seed for P\+R\+NG \mbox{\Hypertarget{class_prime_gen_ad5c15bfdfead9a710093b7eaab68fe6a}\label{class_prime_gen_ad5c15bfdfead9a710093b7eaab68fe6a}} 
+\index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}!generatePrime@{generatePrime}}
+\index{generatePrime@{generatePrime}!PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{generatePrime()}{generatePrime()}}
+{\footnotesize\ttfamily template$<$class Number$>$ \\
+Number \mbox{\hyperlink{class_prime_gen}{Prime\+Gen}}$<$ Number $>$\+::generate\+Prime (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_prime_gen_a32a4d093b941b2b6c90caf7974125f9f}\label{class_prime_gen_a32a4d093b941b2b6c90caf7974125f9f}} 
+\index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}!isPrimeSure@{isPrimeSure}}
+\index{isPrimeSure@{isPrimeSure}!PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{isPrimeSure()}{isPrimeSure()}}
+{\footnotesize\ttfamily template$<$class Number$>$ \\
+bool \mbox{\hyperlink{class_prime_gen}{Prime\+Gen}}$<$ Number $>$\+::is\+Prime\+Sure (\begin{DoxyParamCaption}\item[{Number}]{num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+a 100\% sure method to detect whether a number is prime, works by dividing from 2 to sqrt(n) 
+
+\mbox{\Hypertarget{class_prime_gen_abd36defd1151bb00aef571745701c24c}\label{class_prime_gen_abd36defd1151bb00aef571745701c24c}} 
+\index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}!millerRabinTest@{millerRabinTest}}
+\index{millerRabinTest@{millerRabinTest}!PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{millerRabinTest()}{millerRabinTest()}}
+{\footnotesize\ttfamily template$<$class Number$>$ \\
+bool \mbox{\hyperlink{class_prime_gen}{Prime\+Gen}}$<$ Number $>$\+::miller\+Rabin\+Test (\begin{DoxyParamCaption}\item[{Number}]{candidate,  }\item[{int}]{repetitions = {\ttfamily 25} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+miller rabin test\+: find r and s s.\+t(n-\/1) = r$\ast$(2$^\wedge$s) where r is odd if a$^\wedge$r = 1 (mod n) or a$^\wedge$((2$^\wedge$j)r) = -\/1 (mod n) where a is integer in range \mbox{[}1, n-\/1\mbox{]} and j is integer s.\+t 0 ¡Â j ¡Â s-\/1 then n is strong pseudo prime to base a 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em candidate} & prime number candidate, repetitions\+: number of test repetitions \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_prime_gen_ab05cd6999ea2fb1cf33ef3bdea50f8d2}\label{class_prime_gen_ab05cd6999ea2fb1cf33ef3bdea50f8d2}} 
+\index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}!prelimCheck@{prelimCheck}}
+\index{prelimCheck@{prelimCheck}!PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{prelimCheck()}{prelimCheck()}}
+{\footnotesize\ttfamily template$<$class Number$>$ \\
+bool \mbox{\hyperlink{class_prime_gen}{Prime\+Gen}}$<$ Number $>$\+::prelim\+Check (\begin{DoxyParamCaption}\item[{Number}]{prime\+Candidate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+a function to check whether a number is divisible by any small prime in the member variable sieve 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_prime_gen_ab6198846797d3a028a008915d2acb47b}\label{class_prime_gen_ab6198846797d3a028a008915d2acb47b}} 
+\index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}!primeSeive@{primeSeive}}
+\index{primeSeive@{primeSeive}!PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}}
+\doxysubsubsection{\texorpdfstring{primeSeive}{primeSeive}}
+{\footnotesize\ttfamily template$<$class Number$>$ \\
+std\+::set$<$int$>$ \mbox{\hyperlink{class_prime_gen}{Prime\+Gen}}$<$ Number $>$\+::prime\+Seive}
+
+sieve for first few primes less than a certain number, preliminary check before entering miller rabin uses set for constant remove times 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_prime_gen_8hpp}{Prime\+Gen.\+hpp}}\end{DoxyCompactItemize}
