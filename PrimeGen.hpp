@@ -67,7 +67,7 @@ public:
 
     /// Fermat primality test: uses the identity a^(n-1) = 1 (mod n) when n is prime, used for "middle" step before miller rabin
     /// after preliminary sieve checks
-    bool fermatTest(Number candidate, int repetitions=1){
+    bool fermatTest(Number candidate, int repetitions=20){
         std::mt19937_64 gen(std::time(0)); //seed for uniform int distribution "a" generator
         boost::random::uniform_int_distribution<Number> disa (2, candidate-2); // generate a
         mp::cpp_int a;
@@ -105,7 +105,7 @@ public:
         for (int i = 0; i < 25; i ++){
             while (j <= s-1){
                 if ((fastExpoMod(a, r, candidate) == 1) || (fastExpoMod(a, expo_j_r, candidate)==candidate-1)){
-                    std::cout << candidate << " is a prime !!!! \n";
+//                    std::cout << candidate << " is a prime !!!! \n";
                     return true;
                 }
                 j++;
@@ -142,11 +142,11 @@ public:
 
 
     Number generatePrime(){
-        std::cout << "level ++";
+//        std::cout << "level ++";
         // generate prime candidate
         mp::cpp_int candidate = this->generateCandidate();
         // generate prime sieve if it hasn't been generated yet
-        if (this->primeSeive.size() == 0) this->createSieve(100);
+        if (this->primeSeive.size() == 0) this->createSieve(1000);
         // preliminary and intermediate checks: sieve for preliminary, fermat for intermediate
         // continuously create new candidate if preliminary / intermediate check fails
         while (!this->prelimCheck(candidate) || !this->fermatTest(candidate))
