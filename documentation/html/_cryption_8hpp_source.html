@@ -78,62 +78,98 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_cryption.html#a9bff9890be6f8bc120338be497512d5c">   16</a></span>&#160;    Number <a class="code" href="class_cryption.html#a9bff9890be6f8bc120338be497512d5c">public_e</a> = 65537;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec">   20</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec">generateKeys</a>(){</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="class_prime_gen.html">PrimeGen&lt;Number&gt;</a> pg = <a class="code" href="class_prime_gen.html">PrimeGen&lt;Number&gt;</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        mp::cpp_int p = pg.<a class="code" href="class_prime_gen.html#ad5c15bfdfead9a710093b7eaab68fe6a">generatePrime</a>();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        mp::cpp_int q = pg.<a class="code" href="class_prime_gen.html#ad5c15bfdfead9a710093b7eaab68fe6a">generatePrime</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        this-&gt;public_n = p * q;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        this-&gt;<a class="code" href="class_cryption.html#adcd182594775bbe89773677403836209">totient</a> = (p-1) * (q-1);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        this-&gt;<a class="code" href="class_cryption.html#a494c242189f9a5e88da060f50f041895">generatePrivateKey</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="comment">// after n,d,e have been generated clear/overwrite p,q, and totient</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        this-&gt;<a class="code" href="class_cryption.html#adcd182594775bbe89773677403836209">totient</a> = 0;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        q = 0;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        p = 0;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_cryption.html#a15df5e0f54ce4285b09a996146e1a811">   36</a></span>&#160;    Number <a class="code" href="class_cryption.html#a15df5e0f54ce4285b09a996146e1a811">encrypt</a>(Number plaintext){</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_cryption.html#a2e3ac1b387197aeae93db8a846da71e0">public_n</a>)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a>(plaintext, this-&gt;public_e, this-&gt;public_n);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Keys not generated yet\n&quot;</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_cryption.html#aa38ebb45e65f494c12e6548da8e98efb">   46</a></span>&#160;    Number <a class="code" href="class_cryption.html#aa38ebb45e65f494c12e6548da8e98efb">decrypt</a>(Number cyphertext){</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_cryption.html#a2e3ac1b387197aeae93db8a846da71e0">public_n</a>)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a>(cyphertext, this-&gt;<a class="code" href="class_cryption.html#addfd1b24e385dd50d98baa5feb851d0f">private_key</a>, this-&gt;public_n);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Keys not generated yet\n&quot;</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_cryption.html#addfd1b24e385dd50d98baa5feb851d0f">   56</a></span>&#160;    Number <a class="code" href="class_cryption.html#addfd1b24e385dd50d98baa5feb851d0f">private_key</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_cryption.html#adcd182594775bbe89773677403836209">   58</a></span>&#160;    Number <a class="code" href="class_cryption.html#adcd182594775bbe89773677403836209">totient</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_cryption.html#a494c242189f9a5e88da060f50f041895">   63</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cryption.html#a494c242189f9a5e88da060f50f041895">generatePrivateKey</a>(mp::cpp_int e = 65537){</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">//generate public key if it hasn&#39;t been done already</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span> (! (this-&gt;public_n)) this-&gt;<a class="code" href="class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec">generateKeys</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        mp::cpp_int d = <a class="code" href="_modulo_inv_8hpp.html#a6263e042defe7c6c6e4ec37c8ac554e0">customModInverse</a>(<a class="code" href="class_cryption.html#adcd182594775bbe89773677403836209">totient</a>, e);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        this-&gt;private_key = d;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec">   21</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec">generateKeys</a>(){</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="class_prime_gen.html">PrimeGen&lt;Number&gt;</a> pg = <a class="code" href="class_prime_gen.html">PrimeGen&lt;Number&gt;</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        Number p = pg.<a class="code" href="class_prime_gen.html#ad5c15bfdfead9a710093b7eaab68fe6a">generatePrime</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        Number q = pg.<a class="code" href="class_prime_gen.html#ad5c15bfdfead9a710093b7eaab68fe6a">generatePrime</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        this-&gt;public_n = p * q;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        this-&gt;<a class="code" href="class_cryption.html#adcd182594775bbe89773677403836209">totient</a> = (p-1) * (q-1);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        this-&gt;<a class="code" href="class_cryption.html#ad5de1a6e2e781ede181a95efb3d77490">generatePrivateKey</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;n is &quot;</span> &lt;&lt; <a class="code" href="class_cryption.html#a2e3ac1b387197aeae93db8a846da71e0">public_n</a> &lt;&lt; <span class="stringliteral">&quot; d is &quot;</span> &lt;&lt; <a class="code" href="class_cryption.html#addfd1b24e385dd50d98baa5feb851d0f">private_key</a> &lt;&lt; <span class="stringliteral">&quot; e is &quot;</span> &lt;&lt; <a class="code" href="class_cryption.html#a9bff9890be6f8bc120338be497512d5c">public_e</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// after n,d,e have been generated clear/overwrite p,q, and totient</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        this-&gt;<a class="code" href="class_cryption.html#adcd182594775bbe89773677403836209">totient</a> = 0;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        q = 0;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        p = 0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_cryption.html#a0e2fc739c1ff4d0295138f3006b323bc">   38</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cryption.html#a0e2fc739c1ff4d0295138f3006b323bc">generatePrintKeys</a>(Number e = 65537){</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="class_prime_gen.html">PrimeGen&lt;Number&gt;</a> pg = <a class="code" href="class_prime_gen.html">PrimeGen&lt;Number&gt;</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        Number p = pg.<a class="code" href="class_prime_gen.html#ad5c15bfdfead9a710093b7eaab68fe6a">generatePrime</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        Number q = pg.<a class="code" href="class_prime_gen.html#ad5c15bfdfead9a710093b7eaab68fe6a">generatePrime</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        Number n = p * q;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        std::cout &lt;&lt; n &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        std::cout &lt;&lt; e &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        Number t = (p-1) * (q-1);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        this-&gt;<a class="code" href="class_cryption.html#ae3a0bfc4e29c4e096da35c92ce1c8fae">generatePrintPrivateKey</a>(t, e);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">// after n,d,e have been generated clear/overwrite p,q, and totient</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        t = 0;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        q = 0;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        p = 0;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_cryption.html#a15df5e0f54ce4285b09a996146e1a811">   56</a></span>&#160;    Number <a class="code" href="class_cryption.html#a15df5e0f54ce4285b09a996146e1a811">encrypt</a>(Number plaintext){</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_cryption.html#a2e3ac1b387197aeae93db8a846da71e0">public_n</a>)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a>(plaintext, this-&gt;public_e, this-&gt;public_n);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Keys not generated yet\n&quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_cryption.html#aec8af8c2a579ce8371b152b19314ae9f">   67</a></span>&#160;    Number <a class="code" href="class_cryption.html#aec8af8c2a579ce8371b152b19314ae9f">encrypt</a>(Number n, Number plaintext, Number e=65537){</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a>(plaintext, e, n);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_cryption.html#aa38ebb45e65f494c12e6548da8e98efb">   75</a></span>&#160;    Number <a class="code" href="class_cryption.html#aa38ebb45e65f494c12e6548da8e98efb">decrypt</a>(Number cyphertext){</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span> (this-&gt;public_n)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a>(cyphertext, this-&gt;<a class="code" href="class_cryption.html#addfd1b24e385dd50d98baa5feb851d0f">private_key</a>, this-&gt;public_n);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Keys not generated yet\n&quot;</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_cryption.html#af2041046747da8b168d19120d2ed8d8d">   86</a></span>&#160;    Number <a class="code" href="class_cryption.html#af2041046747da8b168d19120d2ed8d8d">decrypt</a>(Number n, Number cyphertext, Number d){</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a>(cyphertext, d, n);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_cryption.html#addfd1b24e385dd50d98baa5feb851d0f">   92</a></span>&#160;    Number <a class="code" href="class_cryption.html#addfd1b24e385dd50d98baa5feb851d0f">private_key</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_cryption.html#adcd182594775bbe89773677403836209">   94</a></span>&#160;    Number <a class="code" href="class_cryption.html#adcd182594775bbe89773677403836209">totient</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_cryption.html#ad5de1a6e2e781ede181a95efb3d77490">   99</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cryption.html#ad5de1a6e2e781ede181a95efb3d77490">generatePrivateKey</a>(Number e = 65537){</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">//generate public key if it hasn&#39;t been done already</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">if</span> (! (this-&gt;public_n)) this-&gt;<a class="code" href="class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec">generateKeys</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        Number d = <a class="code" href="_modulo_inv_8hpp.html#a6263e042defe7c6c6e4ec37c8ac554e0">customModInverse</a>(<a class="code" href="class_cryption.html#adcd182594775bbe89773677403836209">totient</a>, e);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        this-&gt;private_key = d;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_cryption.html#ae3a0bfc4e29c4e096da35c92ce1c8fae">  111</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cryption.html#ae3a0bfc4e29c4e096da35c92ce1c8fae">generatePrintPrivateKey</a>(Number t, Number e = 65537){</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        Number d = <a class="code" href="_modulo_inv_8hpp.html#a6263e042defe7c6c6e4ec37c8ac554e0">customModInverse</a>(t, e);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        std::cout &lt;&lt; d &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="a_modulo_inv_8hpp_html_a6263e042defe7c6c6e4ec37c8ac554e0"><div class="ttname"><a href="_modulo_inv_8hpp.html#a6263e042defe7c6c6e4ec37c8ac554e0">customModInverse</a></div><div class="ttdeci">Number customModInverse(Number mod, Number e=65537)</div><div class="ttdef"><b>Definition:</b> ModuloInv.hpp:23</div></div>
-<div class="ttc" id="aclass_cryption_html_a15df5e0f54ce4285b09a996146e1a811"><div class="ttname"><a href="class_cryption.html#a15df5e0f54ce4285b09a996146e1a811">Cryption::encrypt</a></div><div class="ttdeci">Number encrypt(Number plaintext)</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:36</div></div>
+<div class="ttc" id="aclass_cryption_html_a15df5e0f54ce4285b09a996146e1a811"><div class="ttname"><a href="class_cryption.html#a15df5e0f54ce4285b09a996146e1a811">Cryption::encrypt</a></div><div class="ttdeci">Number encrypt(Number plaintext)</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:56</div></div>
+<div class="ttc" id="aclass_cryption_html_ad5de1a6e2e781ede181a95efb3d77490"><div class="ttname"><a href="class_cryption.html#ad5de1a6e2e781ede181a95efb3d77490">Cryption::generatePrivateKey</a></div><div class="ttdeci">void generatePrivateKey(Number e=65537)</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:99</div></div>
 <div class="ttc" id="aclass_prime_gen_html"><div class="ttname"><a href="class_prime_gen.html">PrimeGen</a></div><div class="ttdoc">A class to generate large prime numbers.</div><div class="ttdef"><b>Definition:</b> PrimeGen.hpp:18</div></div>
 <div class="ttc" id="aclass_cryption_html"><div class="ttname"><a href="class_cryption.html">Cryption</a></div><div class="ttdoc">class for encrypting and decrypting</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:9</div></div>
 <div class="ttc" id="aclass_cryption_html_a9bff9890be6f8bc120338be497512d5c"><div class="ttname"><a href="class_cryption.html#a9bff9890be6f8bc120338be497512d5c">Cryption::public_e</a></div><div class="ttdeci">Number public_e</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:16</div></div>
+<div class="ttc" id="aclass_cryption_html_a0e2fc739c1ff4d0295138f3006b323bc"><div class="ttname"><a href="class_cryption.html#a0e2fc739c1ff4d0295138f3006b323bc">Cryption::generatePrintKeys</a></div><div class="ttdeci">void generatePrintKeys(Number e=65537)</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:38</div></div>
 <div class="ttc" id="a_modulo_inv_8hpp_html"><div class="ttname"><a href="_modulo_inv_8hpp.html">ModuloInv.hpp</a></div></div>
-<div class="ttc" id="aclass_cryption_html_a4907414f6b4cced9574e431cfa75f0ec"><div class="ttname"><a href="class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec">Cryption::generateKeys</a></div><div class="ttdeci">void generateKeys()</div><div class="ttdoc">function to generate n(publicN), totient, and d(private_key).</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:20</div></div>
-<div class="ttc" id="aclass_cryption_html_aa38ebb45e65f494c12e6548da8e98efb"><div class="ttname"><a href="class_cryption.html#aa38ebb45e65f494c12e6548da8e98efb">Cryption::decrypt</a></div><div class="ttdeci">Number decrypt(Number cyphertext)</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:46</div></div>
-<div class="ttc" id="aclass_cryption_html_a494c242189f9a5e88da060f50f041895"><div class="ttname"><a href="class_cryption.html#a494c242189f9a5e88da060f50f041895">Cryption::generatePrivateKey</a></div><div class="ttdeci">void generatePrivateKey(mp::cpp_int e=65537)</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:63</div></div>
+<div class="ttc" id="aclass_cryption_html_a4907414f6b4cced9574e431cfa75f0ec"><div class="ttname"><a href="class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec">Cryption::generateKeys</a></div><div class="ttdeci">void generateKeys()</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:21</div></div>
+<div class="ttc" id="aclass_cryption_html_aa38ebb45e65f494c12e6548da8e98efb"><div class="ttname"><a href="class_cryption.html#aa38ebb45e65f494c12e6548da8e98efb">Cryption::decrypt</a></div><div class="ttdeci">Number decrypt(Number cyphertext)</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:75</div></div>
+<div class="ttc" id="aclass_cryption_html_ae3a0bfc4e29c4e096da35c92ce1c8fae"><div class="ttname"><a href="class_cryption.html#ae3a0bfc4e29c4e096da35c92ce1c8fae">Cryption::generatePrintPrivateKey</a></div><div class="ttdeci">void generatePrintPrivateKey(Number t, Number e=65537)</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:111</div></div>
+<div class="ttc" id="aclass_cryption_html_af2041046747da8b168d19120d2ed8d8d"><div class="ttname"><a href="class_cryption.html#af2041046747da8b168d19120d2ed8d8d">Cryption::decrypt</a></div><div class="ttdeci">Number decrypt(Number n, Number cyphertext, Number d)</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:86</div></div>
 <div class="ttc" id="a_prime_gen_8hpp_html"><div class="ttname"><a href="_prime_gen_8hpp.html">PrimeGen.hpp</a></div></div>
-<div class="ttc" id="a_fast_expo_8hpp_html_a8ecbddd9149852f135b65af702206b97"><div class="ttname"><a href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a></div><div class="ttdeci">Number customExpoMod(Number base, Number exponent, Number mod)</div><div class="ttdoc">Fast modular exponentiation algorithm.</div><div class="ttdef"><b>Definition:</b> FastExpo.hpp:23</div></div>
-<div class="ttc" id="aclass_cryption_html_adcd182594775bbe89773677403836209"><div class="ttname"><a href="class_cryption.html#adcd182594775bbe89773677403836209">Cryption::totient</a></div><div class="ttdeci">Number totient</div><div class="ttdoc">product of q-1 and p-1</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:58</div></div>
+<div class="ttc" id="a_fast_expo_8hpp_html_a8ecbddd9149852f135b65af702206b97"><div class="ttname"><a href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a></div><div class="ttdeci">Number customExpoMod(Number base, Number exponent, Number mod)</div><div class="ttdoc">Custom Fast modular exponentiation algorithm.</div><div class="ttdef"><b>Definition:</b> FastExpo.hpp:24</div></div>
+<div class="ttc" id="aclass_cryption_html_adcd182594775bbe89773677403836209"><div class="ttname"><a href="class_cryption.html#adcd182594775bbe89773677403836209">Cryption::totient</a></div><div class="ttdeci">Number totient</div><div class="ttdoc">product of q-1 and p-1</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:94</div></div>
 <div class="ttc" id="aclass_prime_gen_html_ad5c15bfdfead9a710093b7eaab68fe6a"><div class="ttname"><a href="class_prime_gen.html#ad5c15bfdfead9a710093b7eaab68fe6a">PrimeGen::generatePrime</a></div><div class="ttdeci">Number generatePrime()</div><div class="ttdef"><b>Definition:</b> PrimeGen.hpp:144</div></div>
 <div class="ttc" id="aclass_cryption_html_a2e3ac1b387197aeae93db8a846da71e0"><div class="ttname"><a href="class_cryption.html#a2e3ac1b387197aeae93db8a846da71e0">Cryption::public_n</a></div><div class="ttdeci">Number public_n</div><div class="ttdoc">public key n found by multiplying two large primes p and q</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:12</div></div>
-<div class="ttc" id="aclass_cryption_html_addfd1b24e385dd50d98baa5feb851d0f"><div class="ttname"><a href="class_cryption.html#addfd1b24e385dd50d98baa5feb851d0f">Cryption::private_key</a></div><div class="ttdeci">Number private_key</div><div class="ttdoc">private key d</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:56</div></div>
+<div class="ttc" id="aclass_cryption_html_aec8af8c2a579ce8371b152b19314ae9f"><div class="ttname"><a href="class_cryption.html#aec8af8c2a579ce8371b152b19314ae9f">Cryption::encrypt</a></div><div class="ttdeci">Number encrypt(Number n, Number plaintext, Number e=65537)</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:67</div></div>
+<div class="ttc" id="aclass_cryption_html_addfd1b24e385dd50d98baa5feb851d0f"><div class="ttname"><a href="class_cryption.html#addfd1b24e385dd50d98baa5feb851d0f">Cryption::private_key</a></div><div class="ttdeci">Number private_key</div><div class="ttdoc">private key d</div><div class="ttdef"><b>Definition:</b> Cryption.hpp:92</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

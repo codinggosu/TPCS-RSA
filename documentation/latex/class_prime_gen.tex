@@ -18,7 +18,7 @@ bool \mbox{\hyperlink{class_prime_gen_ab05cd6999ea2fb1cf33ef3bdea50f8d2}{prelim\
 \begin{DoxyCompactList}\small\item\em a function to check whether a number is divisible by any small prime in the member variable sieve \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_prime_gen_a32a4d093b941b2b6c90caf7974125f9f}{is\+Prime\+Sure}} (Number num)
 \begin{DoxyCompactList}\small\item\em a 100\% sure method to detect whether a number is prime, works by dividing from 2 to sqrt(n) \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_prime_gen_a9abdf338410e68f51f03ef3ea8d103ba}{fermat\+Test}} (Number candidate, int repetitions=1)
+bool \mbox{\hyperlink{class_prime_gen_aa16964a37b28fab9cb34603410d51c72}{fermat\+Test}} (Number candidate, int repetitions=20)
 \item 
 bool \mbox{\hyperlink{class_prime_gen_abd36defd1151bb00aef571745701c24c}{miller\+Rabin\+Test}} (Number candidate, int repetitions=25)
 \item 
@@ -52,12 +52,12 @@ generate a sieve until the \char`\"{}until\char`\"{} value of primes\+: used to 
 \mbox{\texttt{ in}}  & {\em until} & uses int as input since check sieve is likely to be small \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_prime_gen_a9abdf338410e68f51f03ef3ea8d103ba}\label{class_prime_gen_a9abdf338410e68f51f03ef3ea8d103ba}} 
+\mbox{\Hypertarget{class_prime_gen_aa16964a37b28fab9cb34603410d51c72}\label{class_prime_gen_aa16964a37b28fab9cb34603410d51c72}} 
 \index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}!fermatTest@{fermatTest}}
 \index{fermatTest@{fermatTest}!PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}}
 \doxysubsubsection{\texorpdfstring{fermatTest()}{fermatTest()}}
 {\footnotesize\ttfamily template$<$class Number$>$ \\
-bool \mbox{\hyperlink{class_prime_gen}{Prime\+Gen}}$<$ Number $>$\+::fermat\+Test (\begin{DoxyParamCaption}\item[{Number}]{candidate,  }\item[{int}]{repetitions = {\ttfamily 1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+bool \mbox{\hyperlink{class_prime_gen}{Prime\+Gen}}$<$ Number $>$\+::fermat\+Test (\begin{DoxyParamCaption}\item[{Number}]{candidate,  }\item[{int}]{repetitions = {\ttfamily 20} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Fermat primality test\+: uses the identity a$^\wedge$(n-\/1) = 1 (mod n) when n is prime, used for \char`\"{}middle\char`\"{} step before miller rabin after preliminary sieve checks \mbox{\Hypertarget{class_prime_gen_ab21dc2a48756653988979b41b4c4bf49}\label{class_prime_gen_ab21dc2a48756653988979b41b4c4bf49}} 
 \index{PrimeGen$<$ Number $>$@{PrimeGen$<$ Number $>$}!generateCandidate@{generateCandidate}}

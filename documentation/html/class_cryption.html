@@ -80,12 +80,17 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4907414f6b4cced9574e431cfa75f0ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec">generateKeys</a> ()</td></tr>
-<tr class="memdesc:a4907414f6b4cced9574e431cfa75f0ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to generate n(publicN), totient, and d(private_key).  <a href="class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec">More...</a><br /></td></tr>
 <tr class="separator:a4907414f6b4cced9574e431cfa75f0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e2fc739c1ff4d0295138f3006b323bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cryption.html#a0e2fc739c1ff4d0295138f3006b323bc">generatePrintKeys</a> (Number e=65537)</td></tr>
+<tr class="separator:a0e2fc739c1ff4d0295138f3006b323bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15df5e0f54ce4285b09a996146e1a811"><td class="memItemLeft" align="right" valign="top">Number&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cryption.html#a15df5e0f54ce4285b09a996146e1a811">encrypt</a> (Number plaintext)</td></tr>
 <tr class="separator:a15df5e0f54ce4285b09a996146e1a811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec8af8c2a579ce8371b152b19314ae9f"><td class="memItemLeft" align="right" valign="top">Number&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cryption.html#aec8af8c2a579ce8371b152b19314ae9f">encrypt</a> (Number n, Number plaintext, Number e=65537)</td></tr>
+<tr class="separator:aec8af8c2a579ce8371b152b19314ae9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa38ebb45e65f494c12e6548da8e98efb"><td class="memItemLeft" align="right" valign="top">Number&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cryption.html#aa38ebb45e65f494c12e6548da8e98efb">decrypt</a> (Number cyphertext)</td></tr>
 <tr class="separator:aa38ebb45e65f494c12e6548da8e98efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2041046747da8b168d19120d2ed8d8d"><td class="memItemLeft" align="right" valign="top">Number&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cryption.html#af2041046747da8b168d19120d2ed8d8d">decrypt</a> (Number n, Number cyphertext, Number d)</td></tr>
+<tr class="separator:af2041046747da8b168d19120d2ed8d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -97,8 +102,10 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a494c242189f9a5e88da060f50f041895"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cryption.html#a494c242189f9a5e88da060f50f041895">generatePrivateKey</a> (mp::cpp_int e=65537)</td></tr>
-<tr class="separator:a494c242189f9a5e88da060f50f041895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5de1a6e2e781ede181a95efb3d77490"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cryption.html#ad5de1a6e2e781ede181a95efb3d77490">generatePrivateKey</a> (Number e=65537)</td></tr>
+<tr class="separator:ad5de1a6e2e781ede181a95efb3d77490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3a0bfc4e29c4e096da35c92ce1c8fae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cryption.html#ae3a0bfc4e29c4e096da35c92ce1c8fae">generatePrintPrivateKey</a> (Number t, Number e=65537)</td></tr>
+<tr class="separator:ae3a0bfc4e29c4e096da35c92ce1c8fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -116,7 +123,7 @@ class Cryption&lt; Number &gt;</h3>
 <p>class for encrypting and decrypting </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aa38ebb45e65f494c12e6548da8e98efb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa38ebb45e65f494c12e6548da8e98efb">&#9670;&nbsp;</a></span>decrypt()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa38ebb45e65f494c12e6548da8e98efb">&#9670;&nbsp;</a></span>decrypt() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -140,7 +147,7 @@ template&lt;class Number &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>function to decrypt </p><dl class="params"><dt>Parameters</dt><dd>
+<p>function to decrypt when d and n need to be generated </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">Number</td><td>cyphertext </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">Number</td><td>plaintext </td></tr>
@@ -150,8 +157,110 @@ template&lt;class Number &gt; </div>
 
 </div>
 </div>
+<a id="af2041046747da8b168d19120d2ed8d8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2041046747da8b168d19120d2ed8d8d">&#9670;&nbsp;</a></span>decrypt() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Number &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Number <a class="el" href="class_cryption.html">Cryption</a>&lt; Number &gt;::decrypt </td>
+          <td>(</td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>cyphertext</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>function to decrypt when d and n is provided by input </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Number</td><td>cyphertext </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">Number</td><td>plaintext </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aec8af8c2a579ce8371b152b19314ae9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec8af8c2a579ce8371b152b19314ae9f">&#9670;&nbsp;</a></span>encrypt() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Number &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Number <a class="el" href="class_cryption.html">Cryption</a>&lt; Number &gt;::encrypt </td>
+          <td>(</td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>plaintext</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>e</em> = <code>65537</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>function to encrypt when e and n is provided by input </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Number</td><td>plaintext </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">Number</td><td>cyphertext </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a15df5e0f54ce4285b09a996146e1a811"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15df5e0f54ce4285b09a996146e1a811">&#9670;&nbsp;</a></span>encrypt()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a15df5e0f54ce4285b09a996146e1a811">&#9670;&nbsp;</a></span>encrypt() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +284,7 @@ template&lt;class Number &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>function to encrypt </p><dl class="params"><dt>Parameters</dt><dd>
+<p>function to encrypt when e and n need to be generated </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">Number</td><td>plaintext </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">Number</td><td>cyphertext </td></tr>
@@ -209,13 +318,86 @@ template&lt;class Number &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>function to generate n(publicN), totient, and d(private_key). </p>
+<p>function to generate n(publicN), totient, and d(private_key). for encrypting and decrypting internally, without printing keys to screen </p>
 
 </div>
 </div>
-<a id="a494c242189f9a5e88da060f50f041895"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a494c242189f9a5e88da060f50f041895">&#9670;&nbsp;</a></span>generatePrivateKey()</h2>
+<a id="a0e2fc739c1ff4d0295138f3006b323bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e2fc739c1ff4d0295138f3006b323bc">&#9670;&nbsp;</a></span>generatePrintKeys()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Number &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_cryption.html">Cryption</a>&lt; Number &gt;::generatePrintKeys </td>
+          <td>(</td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>e</em> = <code>65537</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>function to generate n(publicN), t, and private key d prints n, e, and d to screen </p>
+
+</div>
+</div>
+<a id="ae3a0bfc4e29c4e096da35c92ce1c8fae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3a0bfc4e29c4e096da35c92ce1c8fae">&#9670;&nbsp;</a></span>generatePrintPrivateKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Number &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_cryption.html">Cryption</a>&lt; Number &gt;::generatePrintPrivateKey </td>
+          <td>(</td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Number&#160;</td>
+          <td class="paramname"><em>e</em> = <code>65537</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>function to generate private key d when e is given as 65537 calculated by some integer (k * totient + 1)/e, since ed = 1 (mod totient) prints the result to screen for outputting to subprocess </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>totient given by <a class="el" href="class_cryption.html#a0e2fc739c1ff4d0295138f3006b323bc">generatePrintKeys()</a>, </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>defaulted to 65537 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad5de1a6e2e781ede181a95efb3d77490"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5de1a6e2e781ede181a95efb3d77490">&#9670;&nbsp;</a></span>generatePrivateKey()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -228,7 +410,7 @@ template&lt;class Number &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_cryption.html">Cryption</a>&lt; Number &gt;::generatePrivateKey </td>
           <td>(</td>
-          <td class="paramtype">mp::cpp_int&#160;</td>
+          <td class="paramtype">Number&#160;</td>
           <td class="paramname"><em>e</em> = <code>65537</code></td><td>)</td>
           <td></td>
         </tr>

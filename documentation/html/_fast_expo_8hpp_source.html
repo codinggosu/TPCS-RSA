@@ -78,57 +78,57 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">return</span> mp::pow(base,exponent);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Number&gt;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="_fast_expo_8hpp.html#ae1fe4844e0170100a1e6cb4118a1ac40">   17</a></span>&#160;Number <a class="code" href="_fast_expo_8hpp.html#ae1fe4844e0170100a1e6cb4118a1ac40">fastExpoMod</a>(Number base, Number exponent, Number mod){</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">return</span> mp::powm(base, exponent, mod);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Number&gt;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">   23</a></span>&#160;Number <a class="code" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a>(Number base, Number exponent, Number mod){</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// for when exponentiating by e, note 65536 = 2 ^ 16</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">if</span> (exponent == 65537){</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        Number temp = 1;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        Number answer = mp::pow(base, 1) % mod;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">while</span> (temp &lt; 65536){</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            answer = (answer*answer) % mod;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            temp *= 2;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        answer *= base; <span class="comment">// one last exponentiation to go from 65536 to 65537</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">return</span> answer%mod;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// for when exponentiating by d</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        Number answer = 1;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">// vector to hold binary bits</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        std::vector&lt;bool&gt; bin = std::vector&lt;bool&gt;();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="comment">// temporary variable to hold base being divided by 2</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        Number temp = exponent;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">//convert to binary</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">while</span> (temp &gt; 0){</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordtype">bool</span> even_odd = temp &amp; 1;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            bin.push_back(even_odd);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            temp /= 2;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">//        std::reverse(bin.begin(),bin.end());</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// variable to keep track to base ^ (some power of 2) modulo mod</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        Number base_two = base % mod;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i : bin){</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">if</span> (i){</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                answer *= base_two;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            base_two = (base_two * base_two) % mod;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">//            std::cout &lt;&lt; &quot;answer&quot; &lt;&lt; answer;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> answer % mod;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Number&gt;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="_fast_expo_8hpp.html#ae1fe4844e0170100a1e6cb4118a1ac40">   18</a></span>&#160;Number <a class="code" href="_fast_expo_8hpp.html#ae1fe4844e0170100a1e6cb4118a1ac40">fastExpoMod</a>(Number base, Number exponent, Number mod){</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">return</span> mp::powm(base, exponent, mod);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Number&gt;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">   24</a></span>&#160;Number <a class="code" href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a>(Number base, Number exponent, Number mod){</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// for when exponentiating by e, note 65536 = 2 ^ 16</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">if</span> (exponent == 65537){</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        Number temp = 1;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        Number answer = mp::pow(base, 1) % mod;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">while</span> (temp &lt; 65536){</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            answer = (answer*answer) % mod;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            temp *= 2;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        answer *= base; <span class="comment">// one last exponentiation to go from 65536 to 65537</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> answer%mod;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// for when exponentiating by d</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        Number answer = 1;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">// vector to hold binary bits</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        std::vector&lt;bool&gt; bin = std::vector&lt;bool&gt;();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// temporary variable to hold base being divided by 2</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        Number temp = exponent;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">//convert to binary</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">while</span> (temp &gt; 0){</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordtype">bool</span> even_odd = temp &amp; 1;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            bin.push_back(even_odd);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            temp /= 2;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//        std::reverse(bin.begin(),bin.end());</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// variable to keep track to base ^ (some power of 2) modulo mod</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        Number base_two = base % mod;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i : bin){</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">if</span> (i){</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                answer *= base_two;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            base_two = (base_two * base_two) % mod;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">//            std::cout &lt;&lt; &quot;answer&quot; &lt;&lt; answer;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> answer % mod;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif // FASTEXPO_HPP_INCLUDED</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif // FASTEXPO_HPP_INCLUDED</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="a_fast_expo_8hpp_html_ae1fe4844e0170100a1e6cb4118a1ac40"><div class="ttname"><a href="_fast_expo_8hpp.html#ae1fe4844e0170100a1e6cb4118a1ac40">fastExpoMod</a></div><div class="ttdeci">Number fastExpoMod(Number base, Number exponent, Number mod)</div><div class="ttdef"><b>Definition:</b> FastExpo.hpp:17</div></div>
+<div class="ttc" id="a_fast_expo_8hpp_html_ae1fe4844e0170100a1e6cb4118a1ac40"><div class="ttname"><a href="_fast_expo_8hpp.html#ae1fe4844e0170100a1e6cb4118a1ac40">fastExpoMod</a></div><div class="ttdeci">Number fastExpoMod(Number base, Number exponent, Number mod)</div><div class="ttdoc">wrapper for boost multi precision fast expo mod function used for testing</div><div class="ttdef"><b>Definition:</b> FastExpo.hpp:18</div></div>
 <div class="ttc" id="a_fast_expo_8hpp_html_aa4b24aa9b1e279a90ce65130141a9bed"><div class="ttname"><a href="_fast_expo_8hpp.html#aa4b24aa9b1e279a90ce65130141a9bed">fastExpo</a></div><div class="ttdeci">Number fastExpo(Number base, int exponent)</div><div class="ttdef"><b>Definition:</b> FastExpo.hpp:12</div></div>
-<div class="ttc" id="a_fast_expo_8hpp_html_a8ecbddd9149852f135b65af702206b97"><div class="ttname"><a href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a></div><div class="ttdeci">Number customExpoMod(Number base, Number exponent, Number mod)</div><div class="ttdoc">Fast modular exponentiation algorithm.</div><div class="ttdef"><b>Definition:</b> FastExpo.hpp:23</div></div>
+<div class="ttc" id="a_fast_expo_8hpp_html_a8ecbddd9149852f135b65af702206b97"><div class="ttname"><a href="_fast_expo_8hpp.html#a8ecbddd9149852f135b65af702206b97">customExpoMod</a></div><div class="ttdeci">Number customExpoMod(Number base, Number exponent, Number mod)</div><div class="ttdoc">Custom Fast modular exponentiation algorithm.</div><div class="ttdef"><b>Definition:</b> FastExpo.hpp:24</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

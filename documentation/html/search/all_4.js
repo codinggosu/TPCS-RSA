@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['generatecandidate_11',['generateCandidate',['../class_prime_gen.html#ab21dc2a48756653988979b41b4c4bf49',1,'PrimeGen']]],
-  ['generatekeys_12',['generateKeys',['../class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec',1,'Cryption']]],
-  ['generateprime_13',['generatePrime',['../class_prime_gen.html#ad5c15bfdfead9a710093b7eaab68fe6a',1,'PrimeGen']]],
-  ['generateprivatekey_14',['generatePrivateKey',['../class_cryption.html#a494c242189f9a5e88da060f50f041895',1,'Cryption']]]
+  ['generate_5fkeys_13',['generate_keys',['../namespaceinteract.html#aee2f9dd16339b419087f9861231751e6',1,'interact']]],
+  ['generatecandidate_14',['generateCandidate',['../class_prime_gen.html#ab21dc2a48756653988979b41b4c4bf49',1,'PrimeGen']]],
+  ['generatekeys_15',['generateKeys',['../class_cryption.html#a4907414f6b4cced9574e431cfa75f0ec',1,'Cryption']]],
+  ['generateprime_16',['generatePrime',['../class_prime_gen.html#ad5c15bfdfead9a710093b7eaab68fe6a',1,'PrimeGen']]],
+  ['generateprintkeys_17',['generatePrintKeys',['../class_cryption.html#a0e2fc739c1ff4d0295138f3006b323bc',1,'Cryption']]],
+  ['generateprintprivatekey_18',['generatePrintPrivateKey',['../class_cryption.html#ae3a0bfc4e29c4e096da35c92ce1c8fae',1,'Cryption']]],
+  ['generateprivatekey_19',['generatePrivateKey',['../class_cryption.html#ad5de1a6e2e781ede181a95efb3d77490',1,'Cryption']]]
 ];

@@ -2,10 +2,10 @@ var indexSectionsWithContent =
 {
   0: "cdefgimprt",
   1: "cp",
-  2: "p",
-  3: "cfmprt",
-  4: "cdefgimp",
-  5: "pt",
+  2: "ip",
+  3: "cfimprt",
+  4: "cdefgimpr",
+  5: "dept",
   6: "t"
 };
 
