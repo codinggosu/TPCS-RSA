@@ -20,8 +20,8 @@ public:
     /// for encrypting and decrypting internally, without printing keys to screen
     void generateKeys(){
         PrimeGen<Number> pg = PrimeGen<Number>();
-        mp::cpp_int p = pg.generatePrime();
-        mp::cpp_int q = pg.generatePrime();
+        Number p = pg.generatePrime();
+        Number q = pg.generatePrime();
         this->public_n = p * q;
         this->totient = (p-1) * (q-1);
         this->generatePrivateKey();
@@ -37,11 +37,11 @@ public:
     /// prints n, e, and d to screen
     void generatePrintKeys(Number e = 65537){
         PrimeGen<Number> pg = PrimeGen<Number>();
-        mp::cpp_int p = pg.generatePrime();
-        mp::cpp_int q = pg.generatePrime();
+        Number p = pg.generatePrime();
+        Number q = pg.generatePrime();
         Number n = p * q;
         std::cout << n << "\n";
-        std::cout <<e << "\n";
+        std::cout << e << "\n";
         Number t = (p-1) * (q-1);
         this->generatePrintPrivateKey(t, e);
         // after n,d,e have been generated clear/overwrite p,q, and totient
@@ -54,7 +54,6 @@ public:
     /// @param[in] Number plaintext
     /// @param[out] Number cyphertext
     Number encrypt(Number plaintext){
-        std::cout << public_n << " is the public n\n";
         if (public_n)
             return customExpoMod(plaintext, this->public_e, this->public_n);
         else
@@ -74,7 +73,6 @@ public:
     /// @param[in] Number cyphertext
     /// @param[out] Number plaintext
     Number decrypt(Number cyphertext){
-        std::cout << public_n << " is the public n\n";
         if (this->public_n)
             return customExpoMod(cyphertext, this->private_key, this->public_n);
         else

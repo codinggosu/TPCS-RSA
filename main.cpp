@@ -7,28 +7,41 @@
 
 int main(int argc, char* argv[])
 {
-// encrypt variables
-//    std::string n = argv[1];
-//    std::string e = argv[2];
-//    std::string pt = argv[3];
-//    mp::cpp_int public_n = mp::cpp_int(n);
-//    mp::cpp_int exponent = mp::cpp_int(e);
-//    mp::cpp_int plaintext = mp::cpp_int(pt);
-
-// decrypt variables
-//    std::string d = argv[2];
-//    std::string ct = argv[3];
-//    mp::cpp_int private_key = mp::cpp_int(d);
-//    mp::cpp_int encrypted = mp::cpp_int(ct);
 
 
     Cryption<mp::cpp_int> crypt = Cryption<mp::cpp_int>();
-    crypt.generateKeys();
-    mp::cpp_int asdf("1234123412341234123421341243123412341234123412341234");
-    mp::cpp_int cte= crypt.encrypt(12345);
-    mp::cpp_int pte = crypt.decrypt(cte);
-    std::cout << "decrypted "<< pte;
 
+
+// generate and print keys
+    crypt.generatePrintKeys();
+
+// encrypt variables
+//    std::string n = argv[1];
+//    std::string pt = argv[2];
+//    std::string e = argv[3];
+//    mp::cpp_int public_n = mp::cpp_int(n);
+//    mp::cpp_int plaintext = mp::cpp_int(pt);
+//    mp::cpp_int exponent = mp::cpp_int(e);
+//    std::cout << "encrypted message:" << crypt.encrypt(public_n, plaintext, exponent);
+
+// decrypt variables
+//    std::string n = argv[1];
+//    std::string ct = argv[2];
+//    std::string d = argv[3];
+//    mp::cpp_int public_n = mp::cpp_int(n);
+//    mp::cpp_int cyphertext = mp::cpp_int(ct);
+//    mp::cpp_int private_key = mp::cpp_int(d);
+//    std::cout << "decrypted message:" << crypt.decrypt(public_n, cyphertext, private_key);
+
+
+
+
+
+
+
+
+
+// testing various functions
 //    std::cout << "custom mod inverse" << customModInverse(1324124314523451) <<"\n";
 //    std::cout << "default mod inverse" <<modInverse(1324124314523451)<<"\n";
 //    mp::cpp_int a("132412134124312341234");
@@ -41,13 +54,6 @@ int main(int argc, char* argv[])
 //    std::cout << pt;
 
 
-    // encrypting
-//    mp::cpp_int cyphertext = crypt.encrypt(public_n, plaintext, exponent);
-//    std::cout << "encrypted:" << cyphertext << "\n";
-
-    // decrypting
-//    mp::cpp_int decrypted = crypt.decrypt(public_n, cyphertext, private_key)
-//    std::cout << "decrypted" << crypt.decrypt(public_n, cyphertext, private_key) << "\n";
 
 
 //    mp::cpp_int first_prime("318831468460481049114126232101899133976907367481127");

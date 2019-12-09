@@ -13,12 +13,13 @@ Number fastExpo(Number base, int exponent){
     return mp::pow(base,exponent);
 }
 
+/// wrapper for boost multi precision fast expo mod function used for testing
 template <class Number>
 Number fastExpoMod(Number base, Number exponent, Number mod){
     return mp::powm(base, exponent, mod);
 }
 
-/// Fast modular exponentiation algorithm
+/// Custom Fast modular exponentiation algorithm
 template <class Number>
 Number customExpoMod(Number base, Number exponent, Number mod){
     // for when exponentiating by e, note 65536 = 2 ^ 16

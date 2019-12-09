@@ -70,8 +70,8 @@ public:
     bool fermatTest(Number candidate, int repetitions=20){
         std::mt19937_64 gen(std::time(0)); //seed for uniform int distribution "a" generator
         boost::random::uniform_int_distribution<Number> disa (2, candidate-2); // generate a
-        mp::cpp_int a;
-        mp::cpp_int minus_one = candidate -1;
+        Number a;
+        Number minus_one = candidate -1;
         for (int i = 0; i < repetitions; i ++){
             a = disa(gen); // reset a
             if (customExpoMod(a, minus_one, candidate) != 1) return false;
@@ -87,20 +87,20 @@ public:
     bool millerRabinTest(Number candidate, int repetitions=25){
 //        std::cout << "candidate being checked is : " << candidate << "\n";
         // find r and s
-        mp::cpp_int s = 0;
-        mp::cpp_int r = candidate - 1;
+        Number s = 0;
+        Number r = candidate - 1;
         while ((r & 1) == 0){
             s += 1;
             r /= 2;
         }
         std::mt19937_64 gen(std::time(0)); // PRNG for seeding uniform_int_distribution
         boost::random::uniform_int_distribution<Number> disa (2, candidate-2); //generator for a which is int in range [1,n-1]
-        mp::cpp_int a = disa(gen);
+        Number a = disa(gen);
         // j is declared as int since exponentiating any reasonable number more than 2 ^ 64 times would require 7 exabytes of RAM
         int j = 0;
-        mp::cpp_int two = 2;
-        mp::cpp_int two_expo_j = fastExpo(two, j); // 2 ^ j
-        mp::cpp_int expo_j_r = two_expo_j * r; // (2 ^ j) * r
+        Number two = 2;
+        Number two_expo_j = fastExpo(two, j); // 2 ^ j
+        Number expo_j_r = two_expo_j * r; // (2 ^ j) * r
         // loop to iterate test with different a 25 times
         for (int i = 0; i < 25; i ++){
             while (j <= s-1){
@@ -127,24 +127,24 @@ public:
         std::mt19937 mtb(seed()*(int)std::time(0)); //engine for b
         std::mt19937 mti(seed() * (int)std::chrono::system_clock::now().time_since_epoch().count()); //engine for i
         std::default_random_engine eng{static_cast<long unsigned int>(time(0))}; //engine for extra randomness
-        mp::cpp_int b = mtb();
-        mp::cpp_int i = mti();
+        Number b = mtb();
+        Number i = mti();
         // big number to make b bigger than max range of mt19937
-        mp::cpp_int bigNum("13");
+        Number bigNum("131234123412341243");
         // make sure b is odd and bigger than 0
         while ((b & 1) == 0 || b < 0) b = mtb();
         //make sure that i is bigger than 0
         while (i < 0) i = mti();
         b *= bigNum;
         i *= (eng() * std::time(0) * 13);
-    return b + (2*i) / 3000000000000;
+    return b + (2*i);
     }
 
 
     Number generatePrime(){
 //        std::cout << "level ++";
         // generate prime candidate
-        mp::cpp_int candidate = this->generateCandidate();
+        Number candidate = this->generateCandidate();
         // generate prime sieve if it hasn't been generated yet
         if (this->primeSeive.size() == 0) this->createSieve(1000);
         // preliminary and intermediate checks: sieve for preliminary, fermat for intermediate
