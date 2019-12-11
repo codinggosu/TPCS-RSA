@@ -1,0 +1,8 @@
+<h1>Users</h1>
+<ul>
+    {% for user in object_list %}
+    <li>{{ user }} {{ user.public_key }}</li>
+    {% empty %}
+    <li>No Users yet.</li>
+    {% endfor %}
+</ul>

@@ -4,8 +4,18 @@ from django.views.generic.detail import DetailView
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
-from .models import CustomUser
+from .models import *
+from .forms import RealUserCreationForm
 
+
+class SignUpView(CreateView):
+    form_class = RealUserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
+
+
+class RealUserListView(ListView):
+    model = RealUser
 
 class CustomUserListView(ListView):
     model = CustomUser
