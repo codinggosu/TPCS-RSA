@@ -10,6 +10,12 @@ int main(int argc, char* argv[])
 
 
     Cryption<mp::cpp_int> crypt = Cryption<mp::cpp_int>();
+    PrimeGen<mp::cpp_int> pg = PrimeGen<mp::cpp_int>();
+
+
+
+//    generate large prime
+//    std::cout << pg.generatePrime();
 
 
 // generate and print keys

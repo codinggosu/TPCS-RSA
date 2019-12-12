@@ -65,7 +65,8 @@ public:
         return true;
     }
 
-    /// Fermat primality test: uses the identity a^(n-1) = 1 (mod n) when n is prime, used for "middle" step before miller rabin
+    /// Fermat primality test: uses the identity a^(n-1) = 1 (mod n) when n is prime, used for
+    /// "middle" step before miller rabin
     /// after preliminary sieve checks
     bool fermatTest(Number candidate, int repetitions=20){
         std::mt19937_64 gen(std::time(0)); //seed for uniform int distribution "a" generator
@@ -85,7 +86,6 @@ public:
     /// then n is strong pseudo prime to base a
     /// @param[in] candidate: prime number candidate, repetitions: number of test repetitions
     bool millerRabinTest(Number candidate, int repetitions=25){
-//        std::cout << "candidate being checked is : " << candidate << "\n";
         // find r and s
         Number s = 0;
         Number r = candidate - 1;
@@ -105,7 +105,6 @@ public:
         for (int i = 0; i < 25; i ++){
             while (j <= s-1){
                 if ((fastExpoMod(a, r, candidate) == 1) || (fastExpoMod(a, expo_j_r, candidate)==candidate-1)){
-//                    std::cout << candidate << " is a prime !!!! \n";
                     return true;
                 }
                 j++;
@@ -130,7 +129,7 @@ public:
         Number b = mtb();
         Number i = mti();
         // big number to make b bigger than max range of mt19937
-        Number bigNum("131234123412341243");
+        Number bigNum("5432938862394598871094723941904857102938471024580129347102974590237181471239408719023471092347");
         // make sure b is odd and bigger than 0
         while ((b & 1) == 0 || b < 0) b = mtb();
         //make sure that i is bigger than 0

@@ -46,7 +46,6 @@ Number customExpoMod(Number base, Number exponent, Number mod){
             bin.push_back(even_odd);
             temp /= 2;
         }
-//        std::reverse(bin.begin(),bin.end());
         // variable to keep track to base ^ (some power of 2) modulo mod
         Number base_two = base % mod;
         for (auto i : bin){
@@ -54,7 +53,6 @@ Number customExpoMod(Number base, Number exponent, Number mod){
                 answer *= base_two;
             }
             base_two = (base_two * base_two) % mod;
-//            std::cout << "answer" << answer;
         }
         return answer % mod;
     }

@@ -30,7 +30,6 @@ Number customModInverse(Number mod, Number e = 65537){
     // quotient
     Number prev_q = mod / e;
     Number q = e / temp;
-//    std::cout << "before while loop preq and q" << prev_q << " " << q << "\n";
     //Bezout Coefficients s and t, postfix _one, _two denote order in recursive relationg
     // ex: s_step = s_two - q * s_one
     Number s_one = 0;
@@ -39,22 +38,18 @@ Number customModInverse(Number mod, Number e = 65537){
     Number t_two = 0;
     // swap variable for swaps
     Number holder;
-//    std::cout << "before while, s, t, r, q temp" << s_one << " " << t_one << " " << r << " " << q <<" " << temp<< "\n";
     while (r != 0){
-//        std::cout << "before, s_one, s_two, t_one, t_two" << s_one<<" "<<s_two<<" "<<t_one<<" "<<t_two<<"\n";
         holder = s_one;
         s_one = s_two - prev_q * holder;
         s_two = holder;
         holder = t_one;
         t_one = t_two - prev_q * holder;
         t_two = holder;
-//        std::cout << "after, s_one, s_two, t_one, t_two" << s_one<<" "<<s_two<<" "<<t_one<<" "<<t_two<<"\n";
         prev_q = q;
         q = temp / r;
         holder = temp;
         temp = r;
         r = holder % r;
-//        std::cout << "s, t" << s_one << " "<< t_one << " q" << q << " temp" << temp << " r" << r << "\n";
     }
     // advance s and t one more time
     holder = s_one;
