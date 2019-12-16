@@ -2,6 +2,8 @@
 /bin/Debug/*
 /obj/Debug/*
 /doxygen/*
+/Report-Presentation/*
+
 
 
 # C::B stuff

@@ -3,15 +3,25 @@
 #include "Cryption.hpp"
 
 
-
-
 int main(int argc, char* argv[])
 {
 
 
-    Cryption<mp::cpp_int> crypt = Cryption<mp::cpp_int>();
+//    Cryption<mp::cpp_int> crypt = Cryption<mp::cpp_int>();
     PrimeGen<mp::cpp_int> pg = PrimeGen<mp::cpp_int>();
 
+
+
+// generate N primes
+//    int generate_n_primes = std::stoi(argv[1]);
+//    std::cout << "Generate " << generate_n_primes << " primes.\n";
+//    auto start = std::chrono::high_resolution_clock::now();
+//    for (int i = 0; i < generate_n_primes; i ++){
+//        std::cout << pg.generatePrime() << "\n";
+//    }
+//    auto finish = std::chrono::high_resolution_clock::now();
+//    auto elapsed = std::chrono::duration_cast<std::chrono::microseconds> (finish-start);
+//    std::cout << "Elapsed time in microseconds: " << elapsed.count();
 
 
 //    generate large prime
@@ -19,7 +29,7 @@ int main(int argc, char* argv[])
 
 
 // generate and print keys
-    crypt.generatePrintKeys();
+//    crypt.generatePrintKeys();
 
 // encrypt variables
 //    std::string n = argv[1];

@@ -29,7 +29,6 @@ public:
     /// expensive probabilistic prime checks -> by prelimCheck() implementation of  Sieve of Eratosthenes algorithm
     /// @param[in] until uses int as input since check sieve is likely to be small
     void createSieve(int until){
-//        std::cout << "generating prime sieve \n";
         //initialize temp sieve
         for (int i = 2; i < until; i++) this->primeSeive.insert(i);
         int until_root = std::sqrt(until); // sqrt of until for checking optimization
@@ -58,7 +57,8 @@ public:
     /// a 100% sure method to detect whether a number is prime, works by dividing from 2 to sqrt(n)
     bool isPrimeSure(Number num){
         if (num%2 == 0) return false;
-        Number until = boost::multiprecision::sqrt(num); //fails for regular int type and any other type that can't be an input to boost::mp::sqrt
+        //fails for regular int type and any other type that can't be an input to boost::mp::sqrt
+        Number until = boost::multiprecision::sqrt(num);
         for (int i = 3; i <= until; i+=2){
             if (num%i == 0 ) return false;
         }
@@ -160,6 +160,5 @@ public:
 
 private:
     // no private functions or variables
-    // maybe make primeSieve, createSieve private functions?
 
 };
